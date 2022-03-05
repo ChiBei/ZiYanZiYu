@@ -4,4 +4,4 @@
 
 <img src="https://raw.githubusercontent.com/ChiBei/Pictures/master/notesimage-20220305192258057.png" alt="image-20220305192258057" style="zoom:50%;" />
 
-<img src="C:\Users\CG\AppData\Roaming\Typora\typora-user-images\image-20220305192734431.png" alt="image-20220305192734431" style="zoom:50%;" />
+<img src="https://raw.githubusercontent.com/ChiBei/Pictures/master/notesimage-20220305193133704.png" alt="image-20220305193133704" style="zoom:50%;" />
