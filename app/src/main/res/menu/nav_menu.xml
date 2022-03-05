@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/main_item"
+        android:title="页面">
+        <menu>
+            <item
+                android:id="@+id/myHome"
+                android:title="主页"
+                android:icon="@drawable/ic_outline_home_24"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/myDraft"
+                android:title="草稿箱"
+                android:icon="@drawable/ic_outline_drafts_24"
+                app:showAsAction="never"/>
+            <item
+                android:id="@+id/myStar"
+                android:title="收藏夹"
+                android:icon="@drawable/ic_baseline_star_border_24"
+                app:showAsAction="never"/>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/another_item"
+        android:title="功能">
+        <menu>
+            <item
+                android:id="@+id/mySetting"
+                android:title="设置"
+                android:icon="@drawable/ic_outline_settings_24"
+                app:showAsAction="never"/>
+        </menu>
+
+    </item>
+
+</menu>
