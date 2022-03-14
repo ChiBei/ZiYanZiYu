@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory
+        app:key="notifications_category1"
+        app:title="功能">
+
+        <Preference
+            android:icon="@drawable/ic_baseline_arrow_back_24"
+            android:key="roomToJson"
+            android:summary="导出数据到json文件"
+            android:title="备份"/>
+
+        <Preference
+            android:icon="@drawable/ic_baseline_arrow_forward_24"
+            android:key="jsonToRoom"
+            android:summary="导入json数据到数据库"
+            android:title="恢复"/>
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:key="notifications_category2"
+        app:title="关于">
+
+        <Preference
+            android:key="thanks"
+            android:summary="头像均来自craftwork的Free Userpics Pack"
+            android:title="致谢"
+            android:icon="@drawable/ic_outline_emoji_events_24"/>
+
+        <Preference
+            android:key="about"
+            android:summary="邮箱：chiibeii@163.com"
+            android:title="开发者联系方式"
+            android:icon="@drawable/ic_outline_email_24"/>
+
+    </PreferenceCategory>
+
+
+
+
+</PreferenceScreen>

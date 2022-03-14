@@ -10,12 +10,17 @@
 
     <item
         android:id="@+id/copyText"
-        android:title="生成图片"
+        android:title="复制文字"
+        android:icon="@drawable/ic_baseline_photo_generate_24"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/editContent"
+        android:title="编辑"
         android:icon="@drawable/ic_baseline_photo_generate_24"
         app:showAsAction="never" />
     <item
         android:id="@+id/anotherThing"
-        android:title="生成图片"
+        android:title="删除"
         android:icon="@drawable/ic_baseline_content_copy_24"
         app:showAsAction="never" />
 </menu>

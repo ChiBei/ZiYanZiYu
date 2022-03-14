@@ -1,150 +1,261 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:background="@color/background_basic"
     android:fitsSystemWindows="true">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:background="@color/background_basic"
-            android:id="@+id/writeBlogTopAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:title="发博客"
-            app:titleCentered="false"
-            app:menu="@menu/write_blog" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:paddingTop="1.5dp"
-        android:paddingBottom="1.5dp"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:background="@color/background_basic"
+                android:id="@+id/writeBlogTopAppBar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title="发博客"
+                app:titleCentered="false"
+                app:menu="@menu/write_blog" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="?attr/materialCardViewElevatedStyle"
-            android:layout_margin="5dp"
-            app:cardBackgroundColor="#FFFFFF"
-            android:elevation="15dp"
-            app:cardCornerRadius="@dimen/card_radius"
-            >
+            android:background="@android:color/transparent"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingTop="1.5dp"
+            android:paddingBottom="1.5dp"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:orientation="vertical">
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    style="@style/Widget.Material3.TextInputLayout.FilledBox"
-                    android:hint="写点什么... ..."
-                    app:boxBackgroundColor = "@color/background_basic"
-                    app:hintEnabled="true"
-                    app:hintTextColor="@color/background_basic_darker_2"
-                    app:boxStrokeColor = "@color/background_basic_darker_2">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:scrollbarStyle="insideInset"
-                        android:id="@+id/edit_now"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                        android:inputType="textMultiLine"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-
-                        >
-
-                        <requestFocus />
-                    </com.google.android.material.textfield.TextInputEditText>
-
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <GridLayout
-                    android:id="@+id/addImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:columnOrderPreserved="true"
-                    android:columnCount="3"
-                    android:paddingHorizontal="4dp"
-                    android:paddingVertical="4dp"
-                    android:columnWidth="90dp"
-                    android:stretchMode="columnWidth"
-                    android:visibility="gone">
-
-                    <ImageView
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_columnWeight="1"/>
-
-                </GridLayout>
-
+                style="?attr/materialCardViewElevatedStyle"
+                android:layout_margin="5dp"
+                app:cardBackgroundColor="#FFFFFF"
+                android:elevation="15dp"
+                app:cardCornerRadius="@dimen/card_radius"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_emoji_emotions_24"
-                        android:backgroundTint="#FFFFFF"
-                        android:id="@+id/addEmoji" />
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
+                        android:hint="写点什么"
+                        app:boxBackgroundColor="@color/background_basic"
+                        app:boxStrokeColor="@color/background_basic_darker_2"
+                        app:hintEnabled="true"
+                        app:hintTextColor="@color/background_basic_darker_2">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edit_now"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:inputType="textMultiLine"
+                            android:scrollbarStyle="insideInset"
+                            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                            <requestFocus />
+                        </com.google.android.material.textfield.TextInputEditText>
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <GridLayout
+                        android:id="@+id/addImage"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_insert_photo_24"
-                        android:backgroundTint="#FFFFFF"
-                        android:id="@+id/addPhoto" />
+                        android:layout_gravity="center"
+                        android:columnWidth="90dp"
+                        android:columnCount="3"
+                        android:columnOrderPreserved="true"
+                        android:paddingHorizontal="4dp"
+                        android:paddingVertical="4dp"
+                        android:stretchMode="columnWidth"
+                        android:visibility="gone">
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="30dp"
-                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="0dp"
+                            android:layout_height="100dp"
+                            android:layout_columnWeight="1" />
 
-                    </View>
+                    </GridLayout>
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/blogItem_reblog_inWriteBlog"
+                        android:visibility="gone"
+                        style="?attr/materialCardViewFilledStyle"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/ic_outline_save_24"
-                        android:backgroundTint="#FFFFFF"
-                        android:id="@+id/saveBlog" />
+                        app:cardBackgroundColor="@color/background_basic_darker"
+                        tools:visibility="visible"
+                        android:layout_marginTop="10dp"
+                        app:cardCornerRadius="@dimen/card_radius"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="10dp"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="5dp"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/userName_reblog_inWriteBlog"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    tools:text="迟北" />
+
+                                <TextView
+                                    android:id="@+id/blogTime_reblog_inWriteBlog"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:textSize="8dp"
+                                    tools:text="shijian" />
+
+                                <TextView
+                                    android:id="@+id/blogSource_reblog_inWriteBlog"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="10dp"
+                                    android:textSize="8dp"
+                                    android:visibility="gone"
+                                    tools:text="from 12344" />
+
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:id="@+id/blogItem_center_reblog_inWriteBlog"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_marginBottom="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/blogContent_reblog_inWriteBlog"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:maxLines="5"
+                                    android:textSize="15dp"
+                                    tools:text="this is a sample" />
+
+                                <TextView
+                                    android:id="@+id/isReadFullContent_reblog_inWriteBlog"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="查看全文"
+                                    android:textColor="@color/background_basic_darker_2"
+                                    android:textSize="13dp" />
+                            </LinearLayout>
+
+
+                            <ImageView
+                                android:id="@+id/blogImage_reblog_inWriteBlog"
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"
+                                android:layout_marginBottom="10dp"
+                                android:scaleType="centerCrop"
+                                android:visibility="gone"
+                                tools:src="@drawable/pic1" />
+
+
+                        </LinearLayout>
+
+
+                    </com.google.android.material.card.MaterialCardView>
+
 
 
                 </LinearLayout>
 
-            </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
 
 
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+        </View>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="bottom"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ImageButton
+                android:id="@+id/addEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background_basic"
+                android:src="@drawable/ic_outline_emoji_emotions_24" />
+
+            <ImageButton
+                android:id="@+id/addPhoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background_basic"
+                android:src="@drawable/ic_outline_insert_photo_24" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+            </View>
+
+            <ImageButton
+                android:id="@+id/saveBlog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/background_basic"
+                android:src="@drawable/ic_outline_save_24" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

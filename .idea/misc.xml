@@ -12,11 +12,13 @@
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.41574074074074074" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_emoji_emotions_24.xml" value="0.40555555555555556" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_expand_less_24.xml" value="0.440625" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_expand_more_24.xml" value="0.42962962962962964" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_favorite_border_24.xml" value="0.41574074074074074" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.40555555555555556" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_insert_photo_24.xml" value="0.40555555555555556" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.259375" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_more_horiz_24.xml" value="0.440625" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_photo_generate_24.xml" value="0.42962962962962964" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_repeat_24.xml" value="0.41574074074074074" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.40555555555555556" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_baseline_search_24.xml" value="0.40555555555555556" />
@@ -35,30 +37,40 @@
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_outline_note_24.xml" value="0.40555555555555556" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_outline_settings_24.xml" value="0.19814814814814816" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_round_comment_24.xml" value="0.40555555555555556" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_star_18_default.xml" value="0.42962962962962964" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_star_18_pressed.xml" value="0.42962962962962964" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/ic_twotone_comment_24.xml" value="0.40555555555555556" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/drawable/star_button.xml" value="0.13425925925925927" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/font/syst_series.xml" value="0.2828125" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout-v26/activity_edit.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/a.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_blog_detailed_content.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_edit.xml" value="0.3731481481481482" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_login.xml" value="0.3074074074074074" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_main.xml" value="0.38137472283813745" />
-        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_my_blog.xml" value="0.23981481481481481" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_my_blog.xml" value="0.3592592592592593" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_my_draft.xml" value="0.35152838427947597" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_my_star.xml" value="0.39351851851851855" />
-        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_write_blog.xml" value="0.4" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/activity_write_blog.xml" value="0.35185185185185186" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blank_background_layout.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blank_layout.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blog_detailed_content.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blog_item.xml" value="0.38902743142144636" />
-        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blog_item_list_fragment.xml" value="0.176" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blog_item_list_fragment.xml" value="0.4" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/blog_item_reblog.xml" value="0.41794871794871796" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/draft_item.xml" value="0.3659090909090909" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_avatar_bottom_sheet_fragment.xml" value="0.33796296296296297" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_avatar_fragment.xml" value="0.3435185185185185" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_avatar_item.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_card.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_profile_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/edit_profile_fragment_2.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/my_blog_fragment.xml" value="0.3907407407407407" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/my_blog_profile.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/my_draft_fragment.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/my_star_fragment.xml" value="0.4" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/nav_header.xml" value="0.25925925925925924" />
+        <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/layout/welcome.xml" value="0.3074074074074074" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/menu/blog_detailed_content.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/menu/more_action.xml" value="0.4234375" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/menu/my_blog.xml" value="0.4244791666666667" />
@@ -66,6 +78,37 @@
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/menu/top_app_bar.xml" value="0.4234375" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/menu/write_blog.xml" value="0.4244791666666667" />
         <entry key="..\:/Learn/Learn_Kotlin/XieYiDian/app/src/main/res/xml/files.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable/ic_launcher_background.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable/ic_star_18_background.xml" value="0.38425925925925924" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable/ic_star_18_default.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable/ic_star_18_pressed.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/drawable/star_button.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_blog_detailed_content.xml" value="0.41794871794871796" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_login.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_main.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_my_blog.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_my_draft.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_my_setting.xml" value="0.1675925925925926" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_my_star.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/activity_write_blog.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/blank_layout.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/blog_item.xml" value="0.41794871794871796" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/blog_item_list_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/draft_item.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/edit_avatar_bottom_sheet_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/edit_avatar_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/edit_avatar_item.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/edit_profile_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/my_blog_fragment.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/my_blog_profile.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/my_star_fragment.xml" value="0.26481481481481484" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/reblog_item.xml" value="0.41794871794871796" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/layout/welcome.xml" value="0.34074074074074073" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/menu/blog_detailed_content.xml" value="0.4244791666666667" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.38333333333333336" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.225" />
+        <entry key="..\:/Learn/Learn_Kotlin/ZiYanZiYu/app/src/main/res/xml/preference.xml" value="0.37407407407407406" />
       </map>
     </option>
   </component>

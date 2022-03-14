@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="center_vertical"
         android:id="@+id/my_profile"
@@ -19,18 +19,19 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/avatar"
-            android:id="@+id/userAvatar" />
+            android:id="@+id/nav_user_avatar" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="15dp"
+            android:layout_marginStart="15dp"
             >
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="1"
                 android:textAppearance="?attr/textAppearanceHeadlineSmall"
                 android:textColor="?attr/colorOnSurface"
                 android:id="@+id/nav_user_name"
@@ -39,13 +40,14 @@
             </TextView>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:maxLines="2"
                 android:layout_marginStart="5dp"
                 android:textAppearance="?attr/textAppearanceTitleSmall"
                 android:textColor="?attr/colorOnSurfaceVariant"
                 android:id="@+id/nav_user_words"
-                tool:text="简介简洁23入8guiybfae">
+                tool:text="简介简洁23入8guiybfae1111111111111111111111111111111">
             </TextView>
 
 

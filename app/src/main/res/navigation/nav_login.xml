@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_login"
+    app:startDestination="@id/welcome">
+
+    <fragment
+        android:id="@+id/welcome"
+        android:name="com.chiibeii.ZiYanZiYu.ui.fragment.WelcomeFragment"
+        android:label="Welcome"
+        tools:layout="@layout/welcome">
+        <action
+            android:id="@+id/action_welcome_to_login"
+            app:destination="@id/login" />
+        <action
+            android:id="@+id/action_welcome_to_main"
+            app:destination="@id/main" />
+    </fragment>
+
+    <activity
+        android:id="@+id/login"
+        android:name="com.chiibeii.ZiYanZiYu.ui.activity.EditProfile"
+        android:label="Login"
+        tools:layout="@layout/edit_profile_fragment">
+    </activity>
+
+    <activity
+        android:id="@+id/main"
+        android:name="com.chiibeii.ZiYanZiYu.ui.activity.MainActivity"
+        android:label="main"
+        tools:layout="@layout/activity_main"/>
+
+</navigation>

@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background_basic"
+    android:fitsSystemWindows="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    android:background="@color/background_basic"
-    android:fitsSystemWindows="true">
+    android:paddingLeft="5dp"
+    android:paddingRight="5dp"
+    android:paddingTop="1.5dp"
+    android:paddingBottom="1.5dp">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/background_basic">
 
         <com.google.android.material.appbar.MaterialToolbar
-            android:background="@color/background_basic"
             android:id="@+id/editProfileTopAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:title="编辑资料"
-            app:titleCentered="false" />
+            app:titleCentered="false"
+            app:layout_scrollFlags="snap|enterAlways" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -36,79 +43,89 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:src="@drawable/ic_baseline_add_24"
-                android:layout_gravity="center"
-                android:layout_marginTop="30dp"
-                android:id="@+id/edit_avatar"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:orientation="horizontal">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/edit_avatar_in_profile_fragment"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    tools:src="@drawable/avatar_male_1" />
+
+                <TextView
+                    android:id="@+id/click_To_Change_Avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="20dp"
+                    android:text="←点击更换头像"
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                    android:textColor="@color/background_basic_darker_2"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/Widget.Material3.TextInputLayout.FilledBox"
-                android:hint="昵称"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="炫酷昵称"
                 app:boxBackgroundColor="@color/background_basic"
-                app:hintEnabled="true"
-                app:hintTextColor="@color/background_basic_darker_2"
-                app:boxStrokeColor="@color/background_basic_darker_2">
+                app:boxStrokeColor="@color/background_basic_darker_2"
+                app:hintTextColor="@color/background_basic_darker_2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:scrollbarStyle="insideInset"
                     android:id="@+id/edit_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                    android:inputType="textMultiLine"
-                    android:focusableInTouchMode="true"
-                    android:background="@color/background_basic" />
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                style="@style/Widget.Material3.TextInputLayout.FilledBox"
-                android:hint="写一句话介绍自己吧！"
+                android:layout_height="wrap_content"
+                android:hint="风骚简介"
                 app:boxBackgroundColor="@color/background_basic"
+                app:boxStrokeColor="@color/background_basic_darker_2"
                 app:hintEnabled="true"
-                app:hintTextColor="@color/background_basic_darker_2"
-                app:boxStrokeColor="@color/background_basic_darker_2">
+                app:hintTextColor="@color/background_basic_darker_2">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:layout_margin="20dp"
-                    android:scrollbarStyle="insideInset"
                     android:id="@+id/edit_words"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-                    android:inputType="textMultiLine"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="20dp"
                     android:focusableInTouchMode="true"
-                     />
+                    android:inputType="textMultiLine"
+                    android:scrollbarStyle="insideInset" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.button.MaterialButton
-                android:layout_width="match_parent"
+                android:id="@+id/edit_configure"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
-                android:text="确定修改"
-                android:textColor="@color/white"
                 android:backgroundTint="@color/background_basic_darker_2"
-                android:id="@+id/edit_configure">
-
-            </com.google.android.material.button.MaterialButton>
+                android:text="确认提交"
+                android:textColor="@color/white"
+                android:layout_marginBottom="40dp"/>
 
         </LinearLayout>
 

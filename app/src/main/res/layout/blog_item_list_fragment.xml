@@ -5,13 +5,22 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:background="@color/background_basic"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/main_BlogItemList_RecyclerView"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+<!--    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout-->
+<!--        android:id="@+id/swipe_refresh_in_main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">-->
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:background="@color/background_basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_BlogItemList_RecyclerView"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+<!--    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>-->
+
 
 </LinearLayout>

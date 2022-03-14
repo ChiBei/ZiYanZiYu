@@ -22,6 +22,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/blog_item" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollViewInDetailedBlogContent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <include layout="@layout/blog_item" />
+
+    </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

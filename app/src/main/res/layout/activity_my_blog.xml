@@ -26,11 +26,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.cpoopc.scrollablelayoutlib.ScrollableLayout
+        android:id="@+id/myBlogLinear"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:id="@+id/myBlogLinear"
         android:background="@color/background_basic"
+        android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 <!--        header-->
@@ -50,7 +50,7 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/userAvatarInProfile"
+                android:id="@+id/user_avatar_in_profile"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
                 android:layout_marginStart="20dp"
@@ -70,7 +70,7 @@
                 android:id="@+id/edit_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
                 android:gravity="center_vertical"
                 android:backgroundTint="@color/background_basic_darker_2"
                 android:text="编辑资料" />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            app:layout_anchor="@id/userAvatarInProfile"
+            app:layout_anchor="@id/user_avatar_in_profile"
             app:layout_anchorGravity="bottom|end|left"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
         </LinearLayout>
