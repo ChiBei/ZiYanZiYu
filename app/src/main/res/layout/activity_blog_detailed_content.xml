@@ -28,8 +28,24 @@
         android:id="@+id/scrollViewInDetailedBlogContent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <include layout="@layout/blog_item" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/blog_item" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                />
+        </LinearLayout>
+
 
     </ScrollView>
+
+
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

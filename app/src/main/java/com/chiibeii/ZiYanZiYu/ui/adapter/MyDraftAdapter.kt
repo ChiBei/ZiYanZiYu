@@ -34,7 +34,7 @@ class MyDraftAdapter(
 
             blogContent.text = blogItem.blogContent
             blogTime.text = "最后编辑于" + blogItem.blogTime
-            isReblogInDraft?.visibility = if (blogItem.isReblog != 0L) View.VISIBLE else View.GONE
+            isReblogInDraft?.visibility = if (blogItem.reblogFrom != 0L) View.VISIBLE else View.GONE
 
             // delete 按钮的点击事件
             deleteDraft?.setOnClickListener {

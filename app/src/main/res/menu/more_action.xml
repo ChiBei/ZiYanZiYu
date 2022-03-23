@@ -4,12 +4,12 @@
 
     <item
         android:id="@+id/editBlog"
-        android:title="修改"
+        android:title="修改（又没写）"
         android:icon="@drawable/ic_baseline_change_24"
         app:showAsAction="never" />
     <item
         android:id="@+id/deleteBlog"
-        android:title="删除"
+        android:title="放入回收站"
         android:icon="@drawable/ic_baseline_delete_outline_24"
         app:showAsAction="never" />
 

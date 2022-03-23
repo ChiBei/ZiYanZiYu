@@ -26,8 +26,9 @@ class WriteBlogViewModel : ViewModel() {
 
     var blogContent = MutableLiveData<String>()
 
-    fun saveBlogContent(blogItem: BlogItem){
-        BlogItemRepository.get().updateBlogContent(blogItem)
+    // ?????
+    fun saveBlogItem(blogItem: BlogItem){
+        BlogItemRepository.get().updateBlogItem(blogItem)
     }
 
     fun insertBlogItem(blogItem: BlogItem):Long{
@@ -35,12 +36,16 @@ class WriteBlogViewModel : ViewModel() {
     }
 
     fun updateBlogItem(blogItem: BlogItem){
-        BlogItemRepository.get().updateBlogContent(blogItem)
+        BlogItemRepository.get().updateBlogItem(blogItem)
     }
 
+    fun loadThisBlogItemLiveData(blogId: Long):LiveData<BlogItem>{
+        return BlogItemRepository.get().loadThisBlogItemLiveData(blogId)
+    }
     fun loadThisBlogItem(blogId: Long):BlogItem{
         return BlogItemRepository.get().loadThisBlogItem(blogId)
     }
+
 
     fun loadDraftBlogItem(){
         BlogItemRepository.get().loadDraftBlogItem()

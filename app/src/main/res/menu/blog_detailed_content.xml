@@ -15,11 +15,11 @@
         app:showAsAction="never" />
     <item
         android:id="@+id/editContent"
-        android:title="编辑"
+        android:title="编辑（还没写）"
         android:icon="@drawable/ic_baseline_photo_generate_24"
         app:showAsAction="never" />
     <item
-        android:id="@+id/anotherThing"
+        android:id="@+id/deleteBlogInDetailedContent"
         android:title="删除"
         android:icon="@drawable/ic_baseline_content_copy_24"
         app:showAsAction="never" />

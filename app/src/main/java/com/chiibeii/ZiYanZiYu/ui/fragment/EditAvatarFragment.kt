@@ -18,7 +18,6 @@ class EditAvatarFragment : BottomSheetDialogFragment() {
     private lateinit var editAvatarPicturesRecyclerview: RecyclerView
     private lateinit var buttonMale: Button
     private lateinit var buttonFemale: Button
-    private lateinit var buttonOthers: Button
 
     private val editAvatarItemList = ArrayList<EditAvatarItem>()
     private val editAvatarItemList_male = ArrayList<EditAvatarItem>()

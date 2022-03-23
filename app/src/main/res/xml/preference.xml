@@ -5,17 +5,24 @@
         app:key="notifications_category1"
         app:title="功能">
 
+<!--        <Preference-->
+<!--            android:icon="@drawable/ic_outline_format_quote_24"-->
+<!--            android:key="roomToJson"-->
+<!--            android:summary="一次性导出全部博客为图片"-->
+<!--            android:title="一键导出为图片"/>-->
+
+
         <Preference
             android:icon="@drawable/ic_baseline_arrow_back_24"
             android:key="roomToJson"
-            android:summary="导出数据到json文件"
-            android:title="备份"/>
+            android:summary="导出数据到***文件"
+            android:title="备份（还没写出来）"/>
 
         <Preference
             android:icon="@drawable/ic_baseline_arrow_forward_24"
             android:key="jsonToRoom"
-            android:summary="导入json数据到数据库"
-            android:title="恢复"/>
+            android:summary="导入***文件到数据库"
+            android:title="恢复（也还没写出来）"/>
 
     </PreferenceCategory>
 
@@ -25,7 +32,7 @@
 
         <Preference
             android:key="thanks"
-            android:summary="头像均来自craftwork的Free Userpics Pack"
+            android:summary="头像均来自craftwork的Free Userpics Pack，部分字体为优设标题黑。"
             android:title="致谢"
             android:icon="@drawable/ic_outline_emoji_events_24"/>
 
@@ -34,6 +41,25 @@
             android:summary="邮箱：chiibeii@163.com"
             android:title="开发者联系方式"
             android:icon="@drawable/ic_outline_email_24"/>
+
+        <Preference
+            android:key="about"
+            android:title="隐私政策"
+            android:icon="@drawable/ic_outline_insert_drive_file_24">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://ablaze-kilometer-288.notion.site/98cd6ab29075436bb44a55c06d42dbe0"/>
+        </Preference>
+
+
+        <Preference
+            android:key="about"
+            android:title="用户协议"
+            android:icon="@drawable/ic_outline_fact_check_24">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://ablaze-kilometer-288.notion.site/96d95bd03fcd4cfb8e8b920263286715"/>
+        </Preference>
 
     </PreferenceCategory>
 

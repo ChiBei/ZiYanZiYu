@@ -24,7 +24,14 @@ class MyBlog : AppCompatActivity() {
         // 启用默认可变home按钮
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
+        // 编辑
         edit_profile.setOnClickListener{
+            val intent = Intent(this, EditProfile::class.java)
+            startActivity(intent)
+        }
+
+        // 编辑
+        user_avatar_in_profile.setOnClickListener{
             val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
         }
@@ -56,7 +63,7 @@ class MyBlog : AppCompatActivity() {
         val prefs = getSharedPreferences("editProfile", Context.MODE_PRIVATE)
         val user_words_in_prefs = prefs.getString("user_words", "一句很酷的签名！")
         val user_name_in_prefs = prefs.getString("user_name", "快去取个名字！")
-        val user_avatar_in_prefs = prefs.getInt("user_choose_avatar", R.drawable.avatar_male_9)
+        val user_avatar_in_prefs = prefs.getInt("user_choose_avatar", R.drawable.avatar_male_7)
         user_name_in_profile?.text = user_name_in_prefs
         user_words_in_profile?.text = user_words_in_prefs
         user_avatar_in_profile?.setImageResource(user_avatar_in_prefs)

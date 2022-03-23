@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/restoreAll"
+        android:title="全部恢复"
+        android:icon="@drawable/ic_outline_restore_from_trash_24"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/deleteAll"
+        android:title="全部清空"
+        android:icon="@drawable/ic_outline_delete_forever_24"
+        app:showAsAction="always" />
+
+</menu>

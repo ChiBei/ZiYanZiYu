@@ -172,18 +172,9 @@
                                     android:id="@+id/blogContent_reblog_inWriteBlog"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:maxLines="5"
                                     android:textSize="15dp"
                                     tools:text="this is a sample" />
 
-                                <TextView
-                                    android:id="@+id/isReadFullContent_reblog_inWriteBlog"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="查看全文"
-                                    android:textColor="@color/background_basic_darker_2"
-                                    android:textSize="13dp" />
                             </LinearLayout>
 
 

@@ -66,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginStart="20dp"
-                    android:text="←点击更换头像"
+                    android:text="←点击更换头像\n（先去写条博客8，不然100%有个小bug...T_T）"
                     android:textAppearance="?attr/textAppearanceHeadlineSmall"
                     android:textColor="@color/background_basic_darker_2"
                     android:textSize="15dp" />

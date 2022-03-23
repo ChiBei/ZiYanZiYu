@@ -20,6 +20,12 @@
                 android:title="收藏夹"
                 android:icon="@drawable/ic_baseline_star_border_24"
                 app:showAsAction="never"/>
+
+            <item
+                android:id="@+id/myTrash"
+                android:title="回收站"
+                android:icon="@drawable/ic_baseline_delete_outline_24"
+                app:showAsAction="never"/>
         </menu>
 
     </item>

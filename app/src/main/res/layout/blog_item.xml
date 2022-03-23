@@ -12,286 +12,291 @@
     android:paddingBottom="1.5dp"
     app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-    <com.google.android.material.card.MaterialCardView
-        style="?attr/materialCardViewElevatedStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:elevation="15dp"
-        app:cardBackgroundColor="#FFFFFF"
-        app:cardCornerRadius="@dimen/card_radius"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
 
-        <LinearLayout
+
+    <com.google.android.material.card.MaterialCardView
+            style="?attr/materialCardViewElevatedStyle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:elevation="15dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/blogItem_front">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:id="@+id/userAvatar"
-                    tools:src="@drawable/avatar"/>
+                android:layout_margin="10dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginStart="10dp">
+                    android:orientation="horizontal"
+                    android:id="@+id/blogItem_front">
 
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:id="@+id/userAvatar"
+                        tools:src="@drawable/avatar"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="10dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="15dp"
+                            android:id="@+id/userName"
+                            android:textStyle="bold"
+                            tools:text="迟北"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="10dp"
+                                android:id="@+id/blogTime"
+                                tools:text="12:00"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:textSize="8dp"
+                                android:id="@+id/blogSource"
+                                android:visibility="gone"
+                                tools:text="from 1"/>
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blogItem_center"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginStart="5dp">
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="15dp"
-                        android:id="@+id/userName"
-                        android:textStyle="bold"
-                        tools:text="迟北"/>
+                        android:id="@+id/blogContent"
+                        android:maxLines="5"
+                        android:ellipsize="end"
+                        tools:text="this is a sample"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="查看全文"
+                        android:textColor="@color/background_basic_darker_2"
+                        android:textSize="13dp"
+                        android:id="@+id/isReadFullContent" />
+                </LinearLayout>
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:scaleType="centerCrop"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:id="@+id/blogImage"
+                    tools:src="@drawable/pic1"
+                    android:visibility="gone"/>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="?attr/materialCardViewFilledStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/background_basic_darker"
+                    app:cardCornerRadius="@dimen/card_radius"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                    tools:layout_editor_absoluteX="10dp"
+                    tools:layout_editor_absoluteY="92dp"
+                    android:id="@+id/blogItem_reblog_inBlogItem">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal">
+                        android:layout_margin="10dp"
+                        android:orientation="vertical">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="10dp"
-                            android:id="@+id/blogTime"
-                            tools:text="12:00"/>
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:orientation="horizontal">
 
-                        <TextView
-                            android:layout_width="wrap_content"
+                            <TextView
+                                android:id="@+id/userName_reblog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12dp"
+                                android:textStyle="bold"
+                                tools:text="迟北" />
+
+                            <TextView
+                                android:id="@+id/blogTime_reblog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:textSize="10dp"
+                                tools:text="shijian" />
+
+                            <TextView
+                                android:id="@+id/blogSource_reblog"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                android:textSize="8dp"
+                                tools:text="from 12344"
+                                android:visibility="gone"/>
+
+
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:id="@+id/blogItem_center__reblog"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:textSize="8dp"
-                            android:id="@+id/blogSource"
-                            android:visibility="gone"
-                            tools:text="from 1"/>
+                            android:layout_marginStart="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/blogContent_reblog"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="5"
+                                android:textSize="15dp"
+                                tools:text="this is a sample" />
+
+                            <TextView
+                                android:id="@+id/isReadFullContent_reblog"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="查看全文"
+                                android:textColor="@color/background_basic_darker_2"
+                                android:textSize="13dp"
+                                android:visibility="gone"/>
+                        </LinearLayout>
+
+
+                        <ImageView
+                            android:id="@+id/blogImage_reblog"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginBottom="10dp"
+                            android:scaleType="centerCrop"
+                            tools:src="@drawable/pic1"
+                            android:visibility="gone"/>
+
 
                     </LinearLayout>
 
 
-                </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/blogItem_center"
-                android:orientation="vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_marginStart="5dp">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:id="@+id/blogContent"
-                    android:maxLines="5"
-                    android:ellipsize="end"
-                    tools:text="this is a sample"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="查看全文"
-                    android:textColor="@color/background_basic_darker_2"
-                    android:textSize="13dp"
-                    android:id="@+id/isReadFullContent" />
-            </LinearLayout>
-
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
-                android:layout_marginBottom="10dp"
-                android:id="@+id/blogImage"
-                tools:src="@drawable/pic1"
-                android:visibility="gone"/>
-
-            <com.google.android.material.card.MaterialCardView
-                style="?attr/materialCardViewFilledStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/background_basic_darker"
-                app:cardCornerRadius="@dimen/card_radius"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                tools:layout_editor_absoluteX="10dp"
-                tools:layout_editor_absoluteY="92dp"
-                android:id="@+id/blogItem_reblog_inBlogItem">
+                </com.google.android.material.card.MaterialCardView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:orientation="vertical">
+                    android:orientation="horizontal"
+                    android:id="@+id/imageButtonSet">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <ImageButton
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:orientation="horizontal">
+                        android:src="@drawable/ic_baseline_repeat_24"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/isReblogButton"
+                        />
 
-                        <TextView
-                            android:id="@+id/userName_reblog"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="12dp"
-                            android:textStyle="bold"
-                            tools:text="迟北" />
-
-                        <TextView
-                            android:id="@+id/blogTime_reblog"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:textSize="10dp"
-                            tools:text="shijian" />
-
-                        <TextView
-                            android:id="@+id/blogSource_reblog"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="10dp"
-                            android:textSize="8dp"
-                            tools:text="from 12344"
-                            android:visibility="gone"/>
-
-
-                    </LinearLayout>
-
-
-                    <LinearLayout
-                        android:id="@+id/blogItem_center__reblog"
-                        android:layout_width="match_parent"
+                    <ImageButton
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/blogContent_reblog"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:maxLines="5"
-                            android:textSize="15dp"
-                            tools:text="this is a sample" />
-
-                        <TextView
-                            android:id="@+id/isReadFullContent_reblog"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="查看全文"
-                            android:textColor="@color/background_basic_darker_2"
-                            android:textSize="13dp"
-                            android:visibility="gone"/>
-                    </LinearLayout>
-
-
-                    <ImageView
-                        android:id="@+id/blogImage_reblog"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_marginBottom="10dp"
-                        android:scaleType="centerCrop"
-                        tools:src="@drawable/pic1"
+                        android:src="@drawable/ic_outline_chat_bubble_outline_24"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/commentButton"
                         android:visibility="gone"/>
 
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_outline_photo_share_18"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/sharePictureButton"
+                        android:visibility="gone"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_favorite_border_24"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/isLikeButton"
+                        android:visibility="gone"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_star_18_background"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/isStarButton" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="30dp"
+                        android:layout_weight="1"/>
+
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_baseline_more_horiz_24"
+                        android:backgroundTint="#FFFFFF"
+                        android:id="@+id/moreActionButton" />
 
                 </LinearLayout>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/reblogRecyclerView"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/imageButtonSet">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_repeat_24"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/isReblogButton"
-                    />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_outline_chat_bubble_outline_24"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/commentButton"
-                    android:visibility="gone"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_outline_photo_share_18"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/sharePictureButton"
-                    android:visibility="gone"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_favorite_border_24"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/isLikeButton"
-                    android:visibility="gone"/>
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_star_18_background"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/isStarButton" />
-
-                <View
-                    android:layout_width="0dp"
-                    android:layout_height="30dp"
-                    android:layout_weight="1"/>
-
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_more_horiz_24"
-                    android:backgroundTint="#FFFFFF"
-                    android:id="@+id/moreActionButton" />
+                </androidx.recyclerview.widget.RecyclerView>
 
             </LinearLayout>
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/reblogRecyclerView"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        </com.google.android.material.card.MaterialCardView>
 
-            </androidx.recyclerview.widget.RecyclerView>
 
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>
 

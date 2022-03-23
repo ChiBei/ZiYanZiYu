@@ -1,10 +1,12 @@
 package com.chiibeii.ZiYanZiYu.ui.activity
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -21,6 +23,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_write_blog.*
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.concurrent.thread
 
 class WriteBlog : AppCompatActivity() {
@@ -29,10 +32,6 @@ class WriteBlog : AppCompatActivity() {
     private val writeBlogViewModelInFragment by lazy {
         ViewModelProvider(this).get(WriteBlogViewModel::class.java)
     }
-
-    // 获取最新头像
-    private val prefs = context.getSharedPreferences("editProfile", Context.MODE_PRIVATE)
-    private val user_avatar_in_prefs = prefs.getInt("user_choose_avatar", R.drawable.avatar_male_7)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,31 +45,29 @@ class WriteBlog : AppCompatActivity() {
             .getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         inputManager.showSoftInput(edit_now, 0)
 
-        // 处理writeBlog的来源：
         // 取回传过来的数值
         val theBlogItem = intent.getStringExtra("TheBlogItem")
         val fromWhere = intent.getStringExtra("FromWhere")
         // 要使用正则来切割
         val theBlogItemSplited = theBlogItem?.split("=", ",",")")
+        Log.d(TAG, "onCreate: $theBlogItemSplited")
 //        这是切割后的例子
-//        [BlogItem(userName, ChiiBeii,
+//        [BlogItem(id, 1647058486309,
+//        userName, ChiiBeii,
 //        userAvatar, 2131165316,
+//        userWords, 1111,
 //        blogTime, 2022/03/09 11:26,
 //        blogSource,from 1,
 //        blogContent,电饭锅哈哈哈,
 //        blogImage,0,
-//        isReblog, 0,  comment, false,
+//        reblogFrom, 0, isReblogDeleted,false, reblogTo,[],
+//        comment, false,
 //        isStar, false,  isLike, false,
-//        isDelete, false,  isDraft, false
-//        id, 1647058486309)]
+//        isDelete, false,  isDraft, false )]
 
         val prefs = context.getSharedPreferences("editProfile", Context.MODE_PRIVATE)
         val user_name_in_prefs = prefs?.getString("user_name", "快去取个名字！")
         userName_reblog_inWriteBlog.text = user_name_in_prefs
-
-        // 自动展开
-        isReadFullContent_reblog_inWriteBlog.visibility = View.GONE
-        blogContent_reblog_inWriteBlog.maxLines = 1000
 
         // 界面显示根据来源不一样，是不一样的
         // 草稿箱里的reblog和普通的reblog其实不一样，两者转发部分的内容设置是不一样的，所以不能合并处理
@@ -79,10 +76,10 @@ class WriteBlog : AppCompatActivity() {
             // 草稿来的，必能携带信息
             "FromDraft" -> {
                 // 初始化草稿箱内容到输入框
-                edit_now.setText(theBlogItemSplited!![9])
+                edit_now.setText(theBlogItemSplited!![13])
 
                 // 判断草稿箱中的草稿，是不是有 reblog别人（转发部分 卡片整体的可见性）
-                if (theBlogItemSplited[13].toLong() != 0L){
+                if (theBlogItemSplited[17].toLong() != 0L){
                     blogItem_reblog_inWriteBlog.visibility = View.VISIBLE
 
                     // 转发来的，必能携带信息，但是要分线程处理：查询数据库和设置值
@@ -103,8 +100,8 @@ class WriteBlog : AppCompatActivity() {
                     thread {
                         val msg = Message()
                         // 获取转发的内容，存到集合里面
-                        val blogTimeReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[13].toLong()).blogTime
-                        val blogContentReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[13].toLong()).blogContent
+                        val blogTimeReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[17].toLong()).blogTime
+                        val blogContentReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[17].toLong()).blogContent
                         val blogReblogMessage = ArrayList<String>()
                         blogReblogMessage.add(blogTimeReblogText)
                         blogReblogMessage.add(blogContentReblogText)
@@ -119,7 +116,7 @@ class WriteBlog : AppCompatActivity() {
                 }
 
                 // 嵌套转发，，，不知道效果怎么样
-                blogImage_reblog_inWriteBlog.visibility = if (theBlogItemSplited[11].toInt() != 0)
+                blogImage_reblog_inWriteBlog.visibility = if (theBlogItemSplited[15].toInt() != 0)
                     View.VISIBLE else View.GONE
 
             }
@@ -129,12 +126,11 @@ class WriteBlog : AppCompatActivity() {
                 blogItem_reblog_inWriteBlog.visibility = View.VISIBLE
 
                 // 转发来的，必能携带信息
-                blogTime_reblog_inWriteBlog.text = theBlogItemSplited!![5]
-                blogContent_reblog_inWriteBlog.text = theBlogItemSplited[9]
-                blogContent_reblog_inWriteBlog.maxLines = 1000
+                blogTime_reblog_inWriteBlog.text = theBlogItemSplited!![9]
+                blogContent_reblog_inWriteBlog.text = theBlogItemSplited[13]
 
                 // 嵌套转发，，，不知道效果怎么样
-                blogImage_reblog_inWriteBlog.visibility = if (theBlogItemSplited[11].toInt() != 0)
+                blogImage_reblog_inWriteBlog.visibility = if (theBlogItemSplited[15].toInt() != 0)
                     View.VISIBLE else View.GONE
 
             }
@@ -154,7 +150,6 @@ class WriteBlog : AppCompatActivity() {
                 MaterialAlertDialogBuilder(this)
                     .setMessage("保存到草稿箱并退出编辑？")
                     .setTitle("提醒！")
-
                     .setPositiveButton("保存并退出编辑") { _, _ ->
                         // SAVE 主逻辑 实现位置【2022.3.12已经写完】
                         val time = SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date())
@@ -170,8 +165,7 @@ class WriteBlog : AppCompatActivity() {
                             "FromDraft" -> {
                                 thread {
                                     // 从传来的对象 的切割结果 就知道 id了！！根据id查出对象
-                                    val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![25].toLong())
-
+                                    val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![1].toLong())
                                     // 判断更新没，不然再存一遍，时间更改就没意义了
                                     if(thisBlogItem.blogContent == edit_now.text.toString()){
                                         // 子线程toast，需要looper！
@@ -189,7 +183,7 @@ class WriteBlog : AppCompatActivity() {
                                         // 存正文到数据库
                                         thisBlogItem.blogContent = edit_now.text.toString()
                                         // 来自草稿箱，正文更新了，正文不是null -> 更新到数据库
-                                        BlogItemRepository.get().updateBlogContent(thisBlogItem)
+                                        BlogItemRepository.get().updateBlogItem(thisBlogItem)
 
                                         Looper.prepare()
                                         Toast.makeText(this, "成功发送一条博客", Toast.LENGTH_SHORT).show()
@@ -202,13 +196,10 @@ class WriteBlog : AppCompatActivity() {
                             // 来自发了一个转发评论，现在要保存草稿 (这个case结合了上下两种case~)
                             "FromReblog" -> {
                                 // 从传来的对象 的切割结果 就知道 id了
-                                val reBlogItemID :Long = theBlogItemSplited!![25].toLong()
                                 // 注意：isReblog是 【转发”指针“】
-                                val blogItemEditNow = BlogItem(
-                                    "test", user_avatar_in_prefs,
-                                    time, "from draft", "", 0, reBlogItemID,
-                                    false, false, false, false, true,Date().time
-                                )
+                                val blogItemEditNow = createANewBlogItem()
+                                blogItemEditNow.isDraft = true
+                                blogItemEditNow.reblogFrom = theBlogItemSplited!![1].toLong()
                                 blogItemEditNow.blogContent = edit_now.text.toString()
                                 thread {
                                     writeBlogViewModelInFragment.insertBlogItem(blogItemEditNow)
@@ -219,11 +210,8 @@ class WriteBlog : AppCompatActivity() {
 
                             // 来自发博客直接存草稿的情况
                             else -> {
-                                val blogItemEditNow = BlogItem(
-                                    "test", user_avatar_in_prefs,
-                                    time, "from draft", "", 0, 0,
-                                    false, false, false, false, true,Date().time
-                                )
+                                val blogItemEditNow = createANewBlogItem()
+                                blogItemEditNow.isDraft = true
                                 blogItemEditNow.blogContent = edit_now.text.toString()
                                 thread {
                                     writeBlogViewModelInFragment.insertBlogItem(blogItemEditNow)
@@ -241,6 +229,14 @@ class WriteBlog : AppCompatActivity() {
             }
         }
 
+        addEmoji.setOnClickListener{
+            Toast.makeText(this, "还没写", Toast.LENGTH_SHORT).show()
+        }
+
+        addPhoto.setOnClickListener{
+            Toast.makeText(this, "也还没写，先占个位", Toast.LENGTH_SHORT).show()
+        }
+
 
     }
 
@@ -249,7 +245,8 @@ class WriteBlog : AppCompatActivity() {
             android.R.id.home -> {
                 finish()
             }
-            // 发送按钮的点击事件，已经写完【2022.3.12】
+            
+            // 发送按钮的点击事件，已经写完【2022.3.12】修修改改，22号
             R.id.sendBlog -> {
 
                 // 取回传过来的数值
@@ -267,7 +264,7 @@ class WriteBlog : AppCompatActivity() {
                     "FromDraft" -> {
                         thread {
                             // 从传来的对象 的切割结果 就知道 id了！！根据id查出对象
-                            val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![25].toLong())
+                            val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![1].toLong())
                             // 对对象的 isDraft 进行操作
                             // 其实保存和发送的【主要区别】在 isDraft值不一样 和 blog的初始值不一样 ，isDraft决定了这条博客是发到 主界面还是草稿箱
                             thisBlogItem.isDraft = false
@@ -284,19 +281,26 @@ class WriteBlog : AppCompatActivity() {
                                 thisBlogItem.blogContent = edit_now.text.toString()
                             }
                             // 更新到数据库
-                            BlogItemRepository.get().updateBlogContent(thisBlogItem)
+                            BlogItemRepository.get().updateBlogItem(thisBlogItem)
                         }
                         Toast.makeText(this, "成功发送一条博客", Toast.LENGTH_SHORT).show()
                         finish()
 
                     }
                     "FromReblog" -> {
+                        // 这里要处理 reblogTo的逻辑，要加到这个集合里面
                         // 从传来的对象的切割结果知道 id了,根据id进行赋值isReblog,isReblog 决定了这条博客在主界面的展示形式
-                        val reBlogItemID :Long = theBlogItemSplited!![25].toLong()
-                        val blogItemEditNow = BlogItem("test", user_avatar_in_prefs, time,
-                            "from 1", "", 0, reBlogItemID,
-                            false, false, false, false, false,Date().time
-                        )
+                        val blogItemEditNow = createANewBlogItem()
+                        // 【转发】的博客的逻辑处理
+                        blogItemEditNow.reblogFrom = theBlogItemSplited!![1].toLong()
+                        // 【被转发】的博客的逻辑处理
+                        // 从传来的对象 的切割结果 就知道 id了！根据id查出被转发的对象,再把新生成的对象的id存到之前的被转发的对象的 reblogTo集合 里面
+                        thread {
+                            val thisBlogItemReblogFrom = BlogItemRepository.get().loadThisBlogItem(
+                                theBlogItemSplited[1].toLong())
+                            thisBlogItemReblogFrom.reblogTo.add(blogItemEditNow.id)
+                            BlogItemRepository.get().updateBlogItem(thisBlogItemReblogFrom)
+                        }
                         // 判断输入内容是否为空
                         if (edit_now.text.toString() == "") {
                             Toast.makeText(this, "输入不能为空哦", Toast.LENGTH_SHORT).show()
@@ -312,10 +316,7 @@ class WriteBlog : AppCompatActivity() {
                     }
                     else -> {
                         // isReblog 只是多一个isReblog的【指针】罢了,其他一样，分开写是因为有空指针异常
-                        val blogItemEditNow = BlogItem("test", user_avatar_in_prefs, time,
-                            "from 1", "", 0, 0,
-                            false, false, false, false, false,Date().time
-                        )
+                        val blogItemEditNow = createANewBlogItem()
                         // 判断输入内容是否为空
                         if (edit_now.text.toString() == "") {
                             Toast.makeText(this, "输入不能为空哦", Toast.LENGTH_SHORT).show()
@@ -332,7 +333,6 @@ class WriteBlog : AppCompatActivity() {
                 }
             }
         }
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -340,4 +340,25 @@ class WriteBlog : AppCompatActivity() {
         menuInflater.inflate(R.menu.write_blog, menu)
         return true
     }
+
+    private fun createANewBlogItem(): BlogItem {
+        //需要跨线程，太麻烦，不如用 getSharedPreferences
+//        thread {
+//            val userName = BlogItemRepository.get().loadUserName()
+//            val userAvatar = BlogItemRepository.get().loadUserAvatar()
+//        }
+
+        // 获取最新头像
+        val prefs = context.getSharedPreferences("editProfile", Context.MODE_PRIVATE)
+        val user_avatar_in_prefs = prefs.getInt("user_choose_avatar", R.drawable.avatar_male_7)
+        val user_name_in_prefs = prefs.getString("user_name", "快去取个名字！")
+
+        return BlogItem(
+            Date().time,user_name_in_prefs!!, user_avatar_in_prefs," ",
+            SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date()),
+            " ", " ", 0, 0,false,ArrayList(),
+            false, false, false, false, false,
+        )
+    }
+
 }

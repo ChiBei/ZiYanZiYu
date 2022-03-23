@@ -35,7 +35,7 @@
                 android:paddingLeft="15dp"
                 android:paddingTop="15dp"
                 android:paddingRight="15dp"
-                android:textSize="18dp" />
+                android:textSize="15sp" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
                         android:maxLines="1"
                         android:text="转发自..."
                         android:textColor="@color/background_basic_darker_2"
-                        android:textSize="12dp"
+                        android:textSize="12sp"
                         tools:visibility="visible"/>
 
                     <TextView
@@ -69,7 +69,7 @@
                         android:maxLines="2"
                         android:text="2022年 12/03 09:03"
                         android:textColor="@color/grey"
-                        android:textSize="12dp" />
+                        android:textSize="12sp" />
                 </LinearLayout>
 
 

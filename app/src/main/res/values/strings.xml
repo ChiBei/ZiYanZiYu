@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">自言自语</string>
+    <string name="user_agreement"><a href="https://ablaze-kilometer-288.notion.site/98cd6ab29075436bb44a55c06d42dbe0">隐私政策</a></string>
+    <string name="privacy_policy">
+        <a href="https://ablaze-kilometer-288.notion.site/96d95bd03fcd4cfb8e8b920263286715">
+            用户协议</a>
+    </string>
 </resources>

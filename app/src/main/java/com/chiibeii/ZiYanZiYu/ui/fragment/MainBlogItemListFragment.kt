@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Adapter
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.preference.PreferenceManager
@@ -50,7 +51,7 @@ class MainBlogItemListFragment : Fragment() {
 //        val swipeRefreshInMain : SwipeRefreshLayout = view.findViewById(R.id.swipe_refresh_in_main)
 //        swipeRefreshInMain.setColorSchemeResources(R.color.background_basic_darker_2)
 //        swipeRefreshInMain.setOnRefreshListener {
-//            // 写法不行啊。。
+//            // 写法不行啊。。但是还是有点用
 //            myAdapter.notifyDataSetChanged()
 //            swipeRefreshInMain.isRefreshing = false
 //        }
@@ -72,6 +73,7 @@ class MainBlogItemListFragment : Fragment() {
 
         // 从个人信息界面改东西还是有延迟，希望可以改进，here！
         // 直接观察 viewmodel里面的 查询到的所有blog的那个livedata
+        // 监测的本来就是整个列表里面的每一个item，哪个变了，listAdapter就更新哪个
         // viewLifecycleOwner 是 fragment，这个observer 与 这个fragment 同生共死
         mainBlogItemListViewModelInFragment.blogItemListLiveData.observe(
             viewLifecycleOwner, {
@@ -89,6 +91,19 @@ class MainBlogItemListFragment : Fragment() {
                 }
             }
         )
+
+        // 所以这里在放屁
+//        for ( k in myAdapter.currentList ) {
+//            mainBlogItemListViewModelInFragment.loadThisBlogItemLiveData(k.id).observe(viewLifecycleOwner,{
+//                Toast.makeText(context, "item 变了", Toast.LENGTH_SHORT).show()
+//                myAdapter.submitList(myAdapter.currentList)
+//            })
+//        }
+
+
+
+
+
     }
 
     // 让activity调用获取fragment实例？
