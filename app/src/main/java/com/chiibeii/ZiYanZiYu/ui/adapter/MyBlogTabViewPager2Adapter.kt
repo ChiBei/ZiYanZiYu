@@ -6,10 +6,10 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.chiibeii.ZiYanZiYu.ui.fragment.MyBlogFragment
 import com.chiibeii.ZiYanZiYu.ui.fragment.MyBlogPicturesFragment
 
-class MyBlogTabViewPager2Adapter(fragmentActivity: FragmentActivity)
-    : FragmentStateAdapter(fragmentActivity){
+class MyBlogTabViewPager2Adapter(fragmentActivity: FragmentActivity) :
+    FragmentStateAdapter(fragmentActivity) {
 
-    private val fragmentList:List<Fragment> = listOf(MyBlogFragment(),MyBlogPicturesFragment())
+    private val fragmentList: List<Fragment> = listOf(MyBlogFragment(), MyBlogPicturesFragment())
 
     override fun getItemCount(): Int = fragmentList.size
 

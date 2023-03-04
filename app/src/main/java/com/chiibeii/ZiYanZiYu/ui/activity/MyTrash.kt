@@ -5,12 +5,14 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.FragmentManager
 import com.chiibeii.ZiYanZiYu.R
 import com.chiibeii.ZiYanZiYu.logic.repository.BlogItemRepository
+import com.chiibeii.ZiYanZiYu.ui.fragment.BlogItemListMoreFragment
 import com.chiibeii.ZiYanZiYu.ui.fragment.MyTrashFragment
 import kotlinx.android.synthetic.main.activity_my_trash.*
 
-class MyTrash: AppCompatActivity() {
+class MyTrash : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +46,8 @@ class MyTrash: AppCompatActivity() {
                 return true
             }
 
-            R.id.deleteAll ->{
+            R.id.deleteAll -> {
+
                 Toast.makeText(this, "还没写", Toast.LENGTH_SHORT).show()
 //                val trash =  BlogItemRepository.get().loadThisBlogItem()
 //                for (k in list) {
@@ -54,7 +57,7 @@ class MyTrash: AppCompatActivity() {
 //                }
             }
 
-            R.id.restoreAll ->{
+            R.id.restoreAll -> {
                 Toast.makeText(this, "还没写", Toast.LENGTH_SHORT).show()
             }
         }

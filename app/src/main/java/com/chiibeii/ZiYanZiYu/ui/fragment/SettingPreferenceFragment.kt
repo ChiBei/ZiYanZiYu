@@ -5,9 +5,9 @@ import androidx.fragment.app.Fragment
 import androidx.preference.PreferenceFragmentCompat
 import com.chiibeii.ZiYanZiYu.R
 
-class SettingPreferenceFragment: PreferenceFragmentCompat() {
+class SettingPreferenceFragment : PreferenceFragmentCompat() {
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
-        setPreferencesFromResource(R.xml.preference,rootKey)
+        setPreferencesFromResource(R.xml.preference, rootKey)
     }
 }

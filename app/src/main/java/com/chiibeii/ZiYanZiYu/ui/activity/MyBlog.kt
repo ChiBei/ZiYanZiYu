@@ -25,31 +25,33 @@ class MyBlog : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         // 编辑
-        edit_profile.setOnClickListener{
+        edit_profile.setOnClickListener {
             val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
         }
 
         // 编辑
-        user_avatar_in_profile.setOnClickListener{
+        user_avatar_in_profile.setOnClickListener {
             val intent = Intent(this, EditProfile::class.java)
             startActivity(intent)
         }
 
-        floatingButtonMyBlog.setOnClickListener{
+        floatingButtonMyBlog.setOnClickListener {
             val intent = Intent(this, WriteBlog::class.java)
             startActivity(intent)
         }
 
         // viewPager2 + tabLayout
         my_blog_viewpager2.adapter = MyBlogTabViewPager2Adapter(this)
-        TabLayoutMediator(my_blog_tablayout,my_blog_viewpager2){
-                tabLayout: TabLayout.Tab, position:Int ->
-            when(position){
-                0->{
+        TabLayoutMediator(
+            my_blog_tablayout,
+            my_blog_viewpager2
+        ) { tabLayout: TabLayout.Tab, position: Int ->
+            when (position) {
+                0 -> {
                     tabLayout.text = "博客"
                 }
-                1->{
+                1 -> {
                     tabLayout.text = "相册"
                 }
             }
@@ -77,11 +79,11 @@ class MyBlog : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             android.R.id.home -> {
                 finish()
             }
-            R.id.search_blog ->{
+            R.id.search_blog -> {
                 Toast.makeText(this, "还没有写", Toast.LENGTH_SHORT).show()
             }
         }

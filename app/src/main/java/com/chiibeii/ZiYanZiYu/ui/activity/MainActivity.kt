@@ -10,7 +10,6 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.chiibeii.ZiYanZiYu.R
-import com.chiibeii.ZiYanZiYu.ui.fragment.BlogItemListMoreFragment
 import com.chiibeii.ZiYanZiYu.ui.fragment.MainBlogItemListFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -154,7 +153,7 @@ class MainActivity : AppCompatActivity() {
 //        Toast.makeText(this, "手滑了吗？", Toast.LENGTH_SHORT).show()
 //    }
 
-    fun initNavHeader(){
+    private fun initNavHeader(){
         val prefs = getSharedPreferences("editProfile", Context.MODE_PRIVATE)
         val user_words_in_prefs = prefs.getString("user_words", "一句很酷的签名！")
         val user_name_in_prefs = prefs.getString("user_name", "快去取个名！")

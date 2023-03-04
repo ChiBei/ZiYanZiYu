@@ -12,7 +12,7 @@ class MainBlogItemListViewModel : ViewModel() {
         BlogItemRepository.get().loadAllBlogItem()
 
     // 可供观察的 livedata: 全部通过 repository 访问
-    fun loadThisBlogItemLiveData(blogId: Long):LiveData<BlogItem>{
+    fun loadThisBlogItemLiveData(blogId: Long): LiveData<BlogItem> {
         return BlogItemRepository.get().loadThisBlogItemLiveData(blogId)
     }
 

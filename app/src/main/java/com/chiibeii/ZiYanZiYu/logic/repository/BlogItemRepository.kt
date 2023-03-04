@@ -56,7 +56,6 @@ class BlogItemRepository private constructor(context: Context) {
     fun loadDraftBlogItem(): LiveData<List<BlogItem>> = blogItemDao.loadDraftBlogItem()
     fun loadTrashBlogItem(): LiveData<List<BlogItem>> = blogItemDao.loadTrashBlogItem()
 
-
     // 改用户名（全部）
     fun updateAllUserName(userName: String) = blogItemDao.updateAllUserName(userName)
     // 改用户头像（全部）
@@ -73,7 +72,6 @@ class BlogItemRepository private constructor(context: Context) {
     fun loadBlogItemCount():Int = blogItemDao.loadBlogItemCount()
 
     fun getPhotoFile(blogItem: BlogItem): File = File(filesDir, "1")
-
 
     // 单例模式
     companion object {

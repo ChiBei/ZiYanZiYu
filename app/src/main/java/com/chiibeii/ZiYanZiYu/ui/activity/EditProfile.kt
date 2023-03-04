@@ -1,13 +1,19 @@
 package com.chiibeii.ZiYanZiYu.ui.activity
 
+import android.app.Activity
+import android.content.ContentValues
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.os.Message
+import android.provider.MediaStore
 import android.util.Log
 import android.view.MenuItem
 import android.view.View
@@ -47,12 +53,23 @@ class EditProfile : AppCompatActivity() {
         val user_avatar_in_prefs = prefs.getInt("user_choose_avatar", R.drawable.avatar_male_7)
         val user_name_in_prefs = prefs.getString("user_name", "快去取个名字！")
         val user_words_in_prefs = prefs.getString("user_words", "一句很酷的签名！")
-        edit_avatar_in_profile_fragment.setImageResource(user_avatar_in_prefs)
+        avatar_in_profile_fragment.setImageResource(user_avatar_in_prefs)
         edit_name.setText(user_name_in_prefs)
         edit_words.setText(user_words_in_prefs)
 
-        // 换头像 功能
-        edit_avatar_in_profile_fragment.setOnClickListener {
+        // 自定义 换头像 功能
+        button_user_choose_avatar.setOnClickListener {
+            click_To_Change_Avatar.visibility = View.GONE
+            // 选 照片
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.type = "image/*"
+            startActivityForResult(intent, 1)
+
+        }
+
+        // 预置 换头像 功能
+        button_user_choose_avatar_from_res.setOnClickListener {
             click_To_Change_Avatar.visibility = View.GONE
             // 弹出 bottomSheet
             val editAvatarBottomSheet = EditAvatarFragment()
@@ -82,19 +99,48 @@ class EditProfile : AppCompatActivity() {
             }
         }
 
-
-        editProfileViewModelInFragment.userAvatarLiveData.observe(this, {
+        editProfileViewModelInFragment.userAvatarLiveData.observe(this) {
             // 数据库不为空时，空就查不了头像了
-            if (it!=null){
+            if (it != null) {
                 Log.d(TAG, "onCreate: 111111111111111111111111111111111111111111111")
-                edit_avatar_in_profile_fragment.setImageResource(it)
+                avatar_in_profile_fragment.setImageResource(it)
                 Log.d(TAG, "onCreate: 222222222222222222222222222222222222222222222")
             }
-            }
-        )
+        }
+
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intent: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intent)
+        when (requestCode) {
+            1 -> {
+                if (resultCode == Activity.RESULT_OK && intent != null) {
+                    // 选取的图片的uri 保存在 intent的data 里面了
+                    intent.data?.let { uri ->
+                        val bitmap = contentResolver.openFileDescriptor(uri, "r")?.use {
+                            BitmapFactory.decodeFileDescriptor(it.fileDescriptor)
+                        }
+                        // 设置 头像
+                        avatar_in_profile_fragment.setImageBitmap(bitmap)
 
+                        // 保存一份到 picture，防止用户删掉
+                        val resolver = application.contentResolver
+                        val contentValues = ContentValues()
+                        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "ZiYanZiYu_Avatar_${System.currentTimeMillis()}")
+                        contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
+
+                        val uri = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+                        if (uri != null) {
+                            resolver.openOutputStream(uri).use {
+                                bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, it)
+                                Toast.makeText(this, "成功保存到相册，快去分享吧", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     // listener不好用，会被杀死。。。
 //    override fun onResume() {

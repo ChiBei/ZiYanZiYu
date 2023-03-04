@@ -16,7 +16,7 @@ import kotlin.concurrent.thread
 
 class MyTrashAdapter(
     private val context: Context?,
-    private val blogItemList: List<BlogItem>
+    private val blogItemList: List<BlogItem>,
 ) :
     RecyclerView.Adapter<MyTrashAdapter.MyTrashViewHolder>() {
 
@@ -25,7 +25,7 @@ class MyTrashAdapter(
         private val deleteTrash: View? = view.findViewById(R.id.deleteTrash)
         private val restoreTrash: View? = view.findViewById(R.id.restoreTrash)
 
-        private val isReblogInTrash:View? = view.findViewById(R.id.isReblogInTrash)
+        private val isReblogInTrash: View? = view.findViewById(R.id.isReblogInTrash)
 
         fun bind(blogItem: BlogItem) {
 
@@ -53,14 +53,14 @@ class MyTrashAdapter(
                     .show()
             }
 
-            restoreTrash?.setOnClickListener{
+            restoreTrash?.setOnClickListener {
                 thread {
                     // 本身isDelete恢复
                     blogItem.isDelete = false
                     // 查儿子，把儿子的 isReblogFromDeleted 全部也改为 false
                     for (k in blogItem.reblogTo) {
                         // 必要的判空！！不要相信编译器
-                        if(BlogItemRepository.get().loadThisBlogItem(k) != null){
+                        if (BlogItemRepository.get().loadThisBlogItem(k) != null) {
                             val son = BlogItemRepository.get().loadThisBlogItem(k)
                             son.isReblogFromDeleted = false
                             BlogItemRepository.get().updateBlogItem(son)
@@ -77,7 +77,7 @@ class MyTrashAdapter(
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): MyTrashAdapter.MyTrashViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.trash_item, parent, false)
         return MyTrashViewHolder(view)
@@ -85,7 +85,7 @@ class MyTrashAdapter(
 
     override fun onBindViewHolder(
         holder: MyTrashAdapter.MyTrashViewHolder,
-        position: Int
+        position: Int,
     ) {
         val blogItem = blogItemList[position]
         holder.bind(blogItem)

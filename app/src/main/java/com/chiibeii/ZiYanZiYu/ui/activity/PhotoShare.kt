@@ -57,7 +57,7 @@ private class PhotoShare {
         val paint = Paint()
         paint.textSize = 50F
         paint.color = Color.WHITE
-        paint.typeface = Typeface.createFromAsset(MyApplication.context.assets, "youshe.ttf")
+        paint.typeface = Typeface.createFromAsset(context.assets, "youshe.ttf")
         cv.drawText("#$user_name_in_prefs" + "的自言自语",
             50F, headHeight + mainHeight.toFloat()+30, paint)
 

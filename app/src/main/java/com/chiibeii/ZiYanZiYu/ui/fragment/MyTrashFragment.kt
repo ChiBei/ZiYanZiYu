@@ -13,10 +13,10 @@ import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.model.MyTrashViewModel
 import com.chiibeii.ZiYanZiYu.ui.adapter.MyTrashAdapter
 
-class MyTrashFragment:Fragment() {
+class MyTrashFragment : Fragment() {
 
     private var adapter = MyTrashAdapter(context, emptyList())
-    private lateinit var myTrashRecyclerView:RecyclerView
+    private lateinit var myTrashRecyclerView: RecyclerView
 
     private val myTrashViewModelInFragment by lazy {
         ViewModelProvider(this).get(MyTrashViewModel::class.java)
@@ -25,9 +25,9 @@ class MyTrashFragment:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        val view = inflater.inflate(R.layout.my_trash_fragment,container,false)
+        val view = inflater.inflate(R.layout.my_trash_fragment, container, false)
 
         myTrashRecyclerView = view.findViewById(R.id.myTrash_RecyclerView)
         myTrashRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -40,17 +40,17 @@ class MyTrashFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         myTrashViewModelInFragment.myTrashLiveData.observe(
-            viewLifecycleOwner,{
-                it?.let {
-                    updateUI(it)
-                }
+            viewLifecycleOwner
+        ) {
+            it?.let {
+                updateUI(it)
             }
-        )
+        }
     }
 
     // 刷新界面，实际上就是重新把itemList给adapter
-    private fun updateUI(blogItemList: List<BlogItem>){
-        adapter = MyTrashAdapter(context,blogItemList)
+    private fun updateUI(blogItemList: List<BlogItem>) {
+        adapter = MyTrashAdapter(context, blogItemList)
         myTrashRecyclerView.adapter = adapter
     }
 

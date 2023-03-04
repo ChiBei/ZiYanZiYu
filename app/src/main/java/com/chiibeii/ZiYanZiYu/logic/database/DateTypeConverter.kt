@@ -1,7 +1,5 @@
 package com.chiibeii.ZiYanZiYu.logic.database
 
-import android.content.ContentValues.TAG
-import android.util.Log
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

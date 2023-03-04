@@ -20,11 +20,11 @@ import com.bumptech.glide.Glide
 import com.chiibeii.ZiYanZiYu.R
 import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.repository.BlogItemRepository
-import com.chiibeii.ZiYanZiYu.ui.activity.*
+import com.chiibeii.ZiYanZiYu.ui.activity.BlogDetailedContent
 import com.chiibeii.ZiYanZiYu.ui.activity.MyApplication.Companion.context
+import com.chiibeii.ZiYanZiYu.ui.activity.MyBlog
+import com.chiibeii.ZiYanZiYu.ui.activity.WriteBlog
 import com.chiibeii.ZiYanZiYu.ui.adapter.MainBlogItemListAdapter.MainBlogItemListViewHolder
-import com.chiibeii.ZiYanZiYu.ui.fragment.BlogItemListMoreFragment
-import kotlinx.android.synthetic.main.edit_profile_fragment.*
 import kotlin.concurrent.thread
 
 class MainBlogItemListAdapter
@@ -49,7 +49,8 @@ class MainBlogItemListAdapter
         private val isReadFullContent: View? = view.findViewById(R.id.isReadFullContent)
         val blogFront: View? = view.findViewById(R.id.blogItem_front)
         private val blogCenter: View? = view.findViewById(R.id.blogItem_center)
-        private val blogItemReblogInBlogItem: View? = view.findViewById(R.id.blogItem_reblog_inBlogItem)
+        private val blogItemReblogInBlogItem: View? =
+            view.findViewById(R.id.blogItem_reblog_inBlogItem)
         private val userNameReblog: TextView = view.findViewById(R.id.userName_reblog)
         private val blogTimeReblog: TextView = view.findViewById(R.id.blogTime_reblog)
         val blogContentReblog: TextView = view.findViewById(R.id.blogContent_reblog)
@@ -69,11 +70,11 @@ class MainBlogItemListAdapter
             reblogRecyclerView?.visibility = View.GONE
 
             // 如果有转发
-            if (blogItem.reblogFrom != 0L)  {
+            if (blogItem.reblogFrom != 0L) {
                 // 转发可见
                 blogItemReblogInBlogItem?.visibility = View.VISIBLE
                 // 如果转发没被删除 ---> 在子线程更新 UI，使用message、handler、messageQueue、looper
-                if (!blogItem.isReblogFromDeleted){
+                if (!blogItem.isReblogFromDeleted) {
                     val updateReblogItem = 1
                     val handler = object : Handler(Looper.getMainLooper()) {
                         override fun handleMessage(msg: Message) {
@@ -83,13 +84,25 @@ class MainBlogItemListAdapter
                                     // 此时，已经到了主线程了，但是数据库不能在主线程操作,所以通过 msg 在子线程处理好传过来
                                     // 【查询父亲是不是isDelete，如果是，那么就显示“已删除”】-->直接用新加的isReblogDeleted
                                     // 一次只能恢复一个，因为列表只传了一个，要是传了多个，就会把后面的东西覆盖在前面一个了，就会导致time、name被gone了---->恢复跳到主界面
-                                    Log.d(TAG, "handleMessage: ${blogItem.blogContent} ${blogItem.isReblogFromDeleted} ")
+                                    Log.d(
+                                        TAG,
+                                        "handleMessage: ${blogItem.blogContent} ${blogItem.isReblogFromDeleted} "
+                                    )
                                     userNameReblog.text = blogItem.userName
-                                    Log.d(TAG, "handleMessage: name1111111111111111111111111111111111111")
+                                    Log.d(
+                                        TAG,
+                                        "handleMessage: name1111111111111111111111111111111111111"
+                                    )
                                     blogTimeReblog.text = (msg.obj as ArrayList<String>)[0]
-                                    Log.d(TAG, "handleMessage: time111111111111111111111111111111111111111111")
+                                    Log.d(
+                                        TAG,
+                                        "handleMessage: time111111111111111111111111111111111111111111"
+                                    )
                                     blogContentReblog.text = (msg.obj as ArrayList<String>)[1]
-                                    Log.d(TAG, "handleMessage: content11111111111111111111111111111111111111111111111")
+                                    Log.d(
+                                        TAG,
+                                        "handleMessage: content11111111111111111111111111111111111111111111111"
+                                    )
                                 }
                             }
                         }
@@ -98,11 +111,13 @@ class MainBlogItemListAdapter
                         val msg = Message()
                         // 如果reblogFrom没有被删
                         // 获取转发的内容，存到集合里面。上下的逻辑都是，如果没有被删，就正常传，否则只显示完蛋 即可
-                        if(!blogItem.isReblogFromDeleted){
+                        if (!blogItem.isReblogFromDeleted) {
                             val blogTimeReblogText =
-                                BlogItemRepository.get().loadThisBlogItem(blogItem.reblogFrom).blogTime
+                                BlogItemRepository.get()
+                                    .loadThisBlogItem(blogItem.reblogFrom).blogTime
                             val blogContentReblogText =
-                                BlogItemRepository.get().loadThisBlogItem(blogItem.reblogFrom).blogContent
+                                BlogItemRepository.get()
+                                    .loadThisBlogItem(blogItem.reblogFrom).blogContent
                             val blogReblogMessage = ArrayList<String>()
                             blogReblogMessage.add(blogTimeReblogText)
                             blogReblogMessage.add(blogContentReblogText)
@@ -112,21 +127,32 @@ class MainBlogItemListAdapter
                         msg.what = updateReblogItem
                         handler.sendMessage(msg)
                     }
-                }else
+                } else
                 // 否则虽然有转发，但是转发被删
                 {
-                    Log.d(TAG, "handleMessage: ${blogItem.blogContent} ${blogItem.isReblogFromDeleted} ")
+                    Log.d(
+                        TAG,
+                        "handleMessage: ${blogItem.blogContent} ${blogItem.isReblogFromDeleted} "
+                    )
                     blogTimeReblog.visibility = View.GONE
-                    Log.d(TAG, "handleMessage: time00000000000000000000000000000000000000000000000000")
+                    Log.d(
+                        TAG,
+                        "handleMessage: time00000000000000000000000000000000000000000000000000"
+                    )
                     userNameReblog.visibility = View.GONE
-                    Log.d(TAG, "handleMessage: name000000000000000000000000000000000000000000000000000")
+                    Log.d(
+                        TAG,
+                        "handleMessage: name000000000000000000000000000000000000000000000000000"
+                    )
                     blogContentReblog.text = "啊偶，无法查看原博文了！"
-                    Log.d(TAG, "handleMessage: content00000000000000000000000000000000000000000000000000000000")
+                    Log.d(
+                        TAG,
+                        "handleMessage: content00000000000000000000000000000000000000000000000000000000"
+                    )
                 }
             }
             // 没有转发
-            else
-            {
+            else {
                 blogItemReblogInBlogItem?.visibility = View.GONE
             }
 
@@ -177,13 +203,12 @@ class MainBlogItemListAdapter
             context.startActivity(intent)
         }
 
-
+//        // more按钮的点击事件,从popup window改到bottomSheet了
 //        holder.moreAction?.setOnClickListener {
 //            // 弹出 bottomSheet
 //            val blogItemListMoreBottomSheet = BlogItemListMoreFragment()
-//            blogItemListMoreBottomSheet.show(, "aaa")
+//            blogItemListMoreBottomSheet.show((view.context as FragmentActivity).supportFragmentManager, "aaa")
 //        }
-
 
         // more按钮的点击事件
         holder.moreAction?.setOnClickListener {
@@ -207,24 +232,24 @@ class MainBlogItemListAdapter
 //                            .setMessage("是否将该博文放入回收站？")
 //                            .setTitle("注意！")
 //                            .setPositiveButton("放入回收站") { _, _ ->
-                                thread {
-                                    // 删本体,先不真删，先使用 isDelete位
-                                    // 【bug所在地】，只要 isDelete 一改，上面就进入线程传递了，殊不知这个item马上就要被删了
-                                    blogItem.isDelete = true
-                                    // 有儿子的话，查儿子，把儿子的 isReblogFromDeleted 全部也改为 true(儿子要是被删了，虽然链接还在，但是已经没有了)
-                                    if (blogItem.reblogTo.isNotEmpty()){
-                                        for (k in blogItem.reblogTo) {
-                                            // 必要的判空！！不要相信编译器---> 如果可以查到 where id = id，查不到就是被删了
-                                            if (BlogItemRepository.get().loadThisBlogItem(k)!=null){
-                                                val son = BlogItemRepository.get().loadThisBlogItem(k)
-                                                son.isReblogFromDeleted = true
-                                                BlogItemRepository.get().updateBlogItem(son)
-                                            }
-                                        }
+                        thread {
+                            // 删本体,先不真删，先使用 isDelete位
+                            // 【bug所在地】，只要 isDelete 一改，上面就进入线程传递了，殊不知这个item马上就要被删了
+                            blogItem.isDelete = true
+                            // 有儿子的话，查儿子，把儿子的 isReblogFromDeleted 全部也改为 true(儿子要是被删了，虽然链接还在，但是已经没有了)
+                            if (blogItem.reblogTo.isNotEmpty()) {
+                                for (k in blogItem.reblogTo) {
+                                    // 必要的判空！！不要相信编译器---> 如果可以查到 where id = id，查不到就是被删了
+                                    if (BlogItemRepository.get().loadThisBlogItem(k) != null) {
+                                        val son = BlogItemRepository.get().loadThisBlogItem(k)
+                                        son.isReblogFromDeleted = true
+                                        BlogItemRepository.get().updateBlogItem(son)
                                     }
-                                    BlogItemRepository.get().updateBlogItem(blogItem)
                                 }
-                                Toast.makeText(context, "已放入回收站", Toast.LENGTH_SHORT).show()
+                            }
+                            BlogItemRepository.get().updateBlogItem(blogItem)
+                        }
+                        Toast.makeText(context, "已放入回收站", Toast.LENGTH_SHORT).show()
 //                            }
 //                            .setNegativeButton("取消放入") { _, _ ->
 //                            }

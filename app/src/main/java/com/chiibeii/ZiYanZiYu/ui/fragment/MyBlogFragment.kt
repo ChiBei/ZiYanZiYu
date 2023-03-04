@@ -13,10 +13,10 @@ import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.model.MainBlogItemListViewModel
 import com.chiibeii.ZiYanZiYu.ui.adapter.MainBlogItemListAdapter
 
-class MyBlogFragment:Fragment() {
+class MyBlogFragment : Fragment() {
 
     private lateinit var mainBlogItemListRecyclerView: RecyclerView
-    private var adapter: MainBlogItemListAdapter?= MainBlogItemListAdapter()
+    private var adapter: MainBlogItemListAdapter? = MainBlogItemListAdapter()
 
     // viewModel 初始化
     private val mainBlogItemListviewModelInFragment by lazy {
@@ -26,7 +26,7 @@ class MyBlogFragment:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.my_blog_fragment, container, false)
 
@@ -50,20 +50,21 @@ class MyBlogFragment:Fragment() {
         // 直接观察 viewmodel里面的 查询到的所有blog的那个livedata
         // viewLifecycleOwner是fragment，这个observer与这个fragment同生共死
         mainBlogItemListviewModelInFragment.blogItemListLiveData.observe(
-            viewLifecycleOwner, {
-                it?.let {
-                    a.add(it.size)
-                    // 如果是添加元素，滚到最上面,否则原地删除
-                    if (a[a.size - 1] > a[a.size - 2]) {
-                        // 提交新列表
-                        adapter!!.submitList(it as MutableList<BlogItem>) {
-                            mainBlogItemListRecyclerView.scrollToPosition(0)
-                        }
-                    } else {
-                        adapter!!.submitList(it as MutableList<BlogItem>)
-                    }                }
+            viewLifecycleOwner
+        ) {
+            it?.let {
+                a.add(it.size)
+                // 如果是添加元素，滚到最上面,否则原地删除
+                if (a[a.size - 1] > a[a.size - 2]) {
+                    // 提交新列表
+                    adapter!!.submitList(it as MutableList<BlogItem>) {
+                        mainBlogItemListRecyclerView.scrollToPosition(0)
+                    }
+                } else {
+                    adapter!!.submitList(it as MutableList<BlogItem>)
+                }
             }
-        )
+        }
     }
 
     // ?,让activity调用获取fragment实例？

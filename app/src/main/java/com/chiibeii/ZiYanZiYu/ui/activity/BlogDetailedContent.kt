@@ -93,6 +93,7 @@ class BlogDetailedContent : AppCompatActivity() {
                     }
                 }
             }
+
             thread {
                 val msg = Message()
                 // 获取转发的内容，存到集合里面
@@ -139,7 +140,8 @@ class BlogDetailedContent : AppCompatActivity() {
             R.id.copyText -> {
                 val clipboardManager =
                     getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                val clipData = ClipData.newPlainText("blogContentCopied",
+                val clipData = ClipData.newPlainText(
+                    "blogContentCopied",
                     theBlogItemSplited?.get(9)
                 )
                 clipboardManager.setPrimaryClip(clipData)
@@ -158,11 +160,11 @@ class BlogDetailedContent : AppCompatActivity() {
                                 .loadThisBlogItem(theBlogItemSplited!![1].toLong())
                             BlogItemRepository.get().deleteOneBlogItem(theBlogItem)
                         }
-                        Toast.makeText(MyApplication.context, "删除成功", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "删除成功", Toast.LENGTH_SHORT).show()
                         finish()
                     }
                     .setNegativeButton("不删除了") { _, _ ->
-                        Toast.makeText(MyApplication.context, "OK，不删了", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "OK，不删了", Toast.LENGTH_SHORT).show()
                     }
                     .create()
                     .show()
@@ -215,8 +217,10 @@ class BlogDetailedContent : AppCompatActivity() {
         paint.textSize = 50F
         paint.color = Color.WHITE
         paint.typeface = Typeface.createFromAsset(this.assets, "youshe.ttf")
-        cv.drawText("#$user_name_in_prefs" + "的自言自语",
-            50F, headHeight + mainHeight.toFloat()+30, paint)
+        cv.drawText(
+            "#$user_name_in_prefs" + "的自言自语",
+            50F, headHeight + mainHeight.toFloat() + 30, paint
+        )
 
         cv.save() // 保存
         cv.restore() // 存储
@@ -229,8 +233,10 @@ class BlogDetailedContent : AppCompatActivity() {
     private fun saveBitmapPhoto(bitmap: Bitmap) {
         val resolver = application.contentResolver
         val contentValues = ContentValues()
-        contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME,
-            "ZiYanZiYu_${System.currentTimeMillis()}")
+        contentValues.put(
+            MediaStore.MediaColumns.DISPLAY_NAME,
+            "ZiYanZiYu_${System.currentTimeMillis()}"
+        )
         contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg")
 
         // 通知刷新？？？
@@ -250,6 +256,5 @@ class BlogDetailedContent : AppCompatActivity() {
         // 备胎方法（要杀掉相册，打开才刷新，不确定。。。）
         sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, uri))
     }
-
 
 }

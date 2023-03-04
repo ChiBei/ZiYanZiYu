@@ -7,7 +7,7 @@ import com.chiibeii.ZiYanZiYu.R
 import com.chiibeii.ZiYanZiYu.ui.fragment.MyDraftFragment
 import kotlinx.android.synthetic.main.activity_my_draft.*
 
-class MyDraft:AppCompatActivity() {
+class MyDraft : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

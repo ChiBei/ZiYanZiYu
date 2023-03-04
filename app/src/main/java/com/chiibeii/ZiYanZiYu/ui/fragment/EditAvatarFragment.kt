@@ -1,16 +1,20 @@
 package com.chiibeii.ZiYanZiYu.ui.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chiibeii.ZiYanZiYu.R
 import com.chiibeii.ZiYanZiYu.logic.entity.EditAvatarItem
 import com.chiibeii.ZiYanZiYu.ui.adapter.EditAvatarPicturesAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import kotlinx.android.synthetic.main.edit_avatar_bottom_sheet_fragment.*
 import java.util.ArrayList
 
 class EditAvatarFragment : BottomSheetDialogFragment() {
@@ -31,12 +35,12 @@ class EditAvatarFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.edit_avatar_bottom_sheet_fragment, container, false)
 
         editAvatarPicturesRecyclerview = view.findViewById(R.id.edit_avatar_pictures_recyclerview)
-        val layoutManager = GridLayoutManager(context,4)
+        val layoutManager = GridLayoutManager(context, 4)
         editAvatarPicturesRecyclerview.layoutManager = layoutManager
         val adapter_male_default = EditAvatarPicturesAdapter(editAvatarItemList_male)
         editAvatarPicturesRecyclerview.adapter = adapter_male_default
@@ -44,18 +48,20 @@ class EditAvatarFragment : BottomSheetDialogFragment() {
         buttonMale = view.findViewById(R.id.button_male)
         buttonFemale = view.findViewById(R.id.button_female)
 
-        buttonMale.setOnClickListener{
-            editAvatarPicturesRecyclerview = view.findViewById(R.id.edit_avatar_pictures_recyclerview)
-            val layoutManager = GridLayoutManager(context,4)
+        buttonMale.setOnClickListener {
+            editAvatarPicturesRecyclerview =
+                view.findViewById(R.id.edit_avatar_pictures_recyclerview)
+            val layoutManager = GridLayoutManager(context, 4)
             editAvatarPicturesRecyclerview.layoutManager = layoutManager
 
             val adapter_female = EditAvatarPicturesAdapter(editAvatarItemList_male)
             editAvatarPicturesRecyclerview.adapter = adapter_female
         }
 
-        buttonFemale.setOnClickListener{
-            editAvatarPicturesRecyclerview = view.findViewById(R.id.edit_avatar_pictures_recyclerview)
-            val layoutManager = GridLayoutManager(context,4)
+        buttonFemale.setOnClickListener {
+            editAvatarPicturesRecyclerview =
+                view.findViewById(R.id.edit_avatar_pictures_recyclerview)
+            val layoutManager = GridLayoutManager(context, 4)
             editAvatarPicturesRecyclerview.layoutManager = layoutManager
 
             val adapter_female = EditAvatarPicturesAdapter(editAvatarItemList)
@@ -123,9 +129,6 @@ class EditAvatarFragment : BottomSheetDialogFragment() {
 
 
     }
-
-
-
 
 
 }

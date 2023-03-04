@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel
 import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.repository.BlogItemRepository
 
-class MyStarViewModel :ViewModel(){
+class MyStarViewModel : ViewModel() {
 
     private val myStarBlogItemRepository = BlogItemRepository.get()
 

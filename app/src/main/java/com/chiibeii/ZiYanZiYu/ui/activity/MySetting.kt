@@ -17,7 +17,7 @@ class MySetting : AppCompatActivity() {
         // 跟其他fragment初始化其实一模一样
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.frameLayout_my_setting_fragment,SettingPreferenceFragment())
+            .replace(R.id.frameLayout_my_setting_fragment, SettingPreferenceFragment())
             .commit()
 
     }

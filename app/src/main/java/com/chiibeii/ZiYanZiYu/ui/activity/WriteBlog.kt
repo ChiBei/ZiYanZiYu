@@ -49,7 +49,7 @@ class WriteBlog : AppCompatActivity() {
         val theBlogItem = intent.getStringExtra("TheBlogItem")
         val fromWhere = intent.getStringExtra("FromWhere")
         // 要使用正则来切割
-        val theBlogItemSplited = theBlogItem?.split("=", ",",")")
+        val theBlogItemSplited = theBlogItem?.split("=", ",", ")")
         Log.d(TAG, "onCreate: $theBlogItemSplited")
 //        这是切割后的例子
 //        [BlogItem(id, 1647058486309,
@@ -79,20 +79,22 @@ class WriteBlog : AppCompatActivity() {
                 edit_now.setText(theBlogItemSplited!![13])
 
                 // 判断草稿箱中的草稿，是不是有 reblog别人（转发部分 卡片整体的可见性）
-                if (theBlogItemSplited[17].toLong() != 0L){
+                if (theBlogItemSplited[17].toLong() != 0L) {
                     blogItem_reblog_inWriteBlog.visibility = View.VISIBLE
 
                     // 转发来的，必能携带信息，但是要分线程处理：查询数据库和设置值
                     // 在子线程更新 UI，使用message、handler、messageQueue、looper
                     val updateReblogItem = 1
-                    val handler = object : Handler(Looper.getMainLooper()){
-                        override fun handleMessage(msg: Message){
+                    val handler = object : Handler(Looper.getMainLooper()) {
+                        override fun handleMessage(msg: Message) {
                             when (msg.what) {
                                 updateReblogItem -> {
                                     // 指针，而且要避免在子线程直接更改UI！！！
                                     // 此时，已经到了主线程了，但是数据库不能在主线程操作,所以通过 msg 在子线程处理好传过来
-                                    blogTime_reblog_inWriteBlog.text = (msg.obj as ArrayList<String>)[0]
-                                    blogContent_reblog_inWriteBlog.text = (msg.obj as ArrayList<String>)[1]
+                                    blogTime_reblog_inWriteBlog.text =
+                                        (msg.obj as ArrayList<String>)[0]
+                                    blogContent_reblog_inWriteBlog.text =
+                                        (msg.obj as ArrayList<String>)[1]
                                 }
                             }
                         }
@@ -100,8 +102,10 @@ class WriteBlog : AppCompatActivity() {
                     thread {
                         val msg = Message()
                         // 获取转发的内容，存到集合里面
-                        val blogTimeReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[17].toLong()).blogTime
-                        val blogContentReblogText = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited[17].toLong()).blogContent
+                        val blogTimeReblogText = BlogItemRepository.get()
+                            .loadThisBlogItem(theBlogItemSplited[17].toLong()).blogTime
+                        val blogContentReblogText = BlogItemRepository.get()
+                            .loadThisBlogItem(theBlogItemSplited[17].toLong()).blogContent
                         val blogReblogMessage = ArrayList<String>()
                         blogReblogMessage.add(blogTimeReblogText)
                         blogReblogMessage.add(blogContentReblogText)
@@ -111,7 +115,7 @@ class WriteBlog : AppCompatActivity() {
                         handler.sendMessage(msg)
                     }
 
-                }else{
+                } else {
                     blogItem_reblog_inWriteBlog.visibility = View.GONE
                 }
 
@@ -158,22 +162,23 @@ class WriteBlog : AppCompatActivity() {
                         val theBlogItem = intent.getStringExtra("TheBlogItem")
                         val fromWhere = intent.getStringExtra("FromWhere")
                         // 要使用正则来切割
-                        val theBlogItemSplited = theBlogItem?.split("=", ",",")")
+                        val theBlogItemSplited = theBlogItem?.split("=", ",", ")")
 
                         // 输入框的内容 给 新建的 blogItem/或者草稿箱来的blogItem
                         when (fromWhere) {
                             "FromDraft" -> {
                                 thread {
                                     // 从传来的对象 的切割结果 就知道 id了！！根据id查出对象
-                                    val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![1].toLong())
+                                    val thisBlogItem = BlogItemRepository.get()
+                                        .loadThisBlogItem(theBlogItemSplited!![1].toLong())
                                     // 判断更新没，不然再存一遍，时间更改就没意义了
-                                    if(thisBlogItem.blogContent == edit_now.text.toString()){
+                                    if (thisBlogItem.blogContent == edit_now.text.toString()) {
                                         // 子线程toast，需要looper！
                                         Looper.prepare()
                                         Toast.makeText(this, "未做更改", Toast.LENGTH_SHORT).show()
                                         Looper.loop()
                                         // 不finish 哦，等用户改！
-                                    }else{
+                                    } else {
                                         // unique的时间戳要保持最后一次保存时候的 【最新】时间值
                                         // 要保证只有在 发送/保存 按钮点击的逻辑里面才能更改时间和时间戳id
                                         // 更改id，是为了使排序顺序正常
@@ -229,11 +234,11 @@ class WriteBlog : AppCompatActivity() {
             }
         }
 
-        addEmoji.setOnClickListener{
+        addEmoji.setOnClickListener {
             Toast.makeText(this, "还没写", Toast.LENGTH_SHORT).show()
         }
 
-        addPhoto.setOnClickListener{
+        addPhoto.setOnClickListener {
             Toast.makeText(this, "也还没写，先占个位", Toast.LENGTH_SHORT).show()
         }
 
@@ -245,7 +250,7 @@ class WriteBlog : AppCompatActivity() {
             android.R.id.home -> {
                 finish()
             }
-            
+
             // 发送按钮的点击事件，已经写完【2022.3.12】修修改改，22号
             R.id.sendBlog -> {
 
@@ -253,7 +258,7 @@ class WriteBlog : AppCompatActivity() {
                 val theBlogItem = intent.getStringExtra("TheBlogItem")
                 val fromWhere = intent.getStringExtra("FromWhere")
                 // 要使用正则来切割
-                val theBlogItemSplited = theBlogItem?.split("=", ",",")")
+                val theBlogItemSplited = theBlogItem?.split("=", ",", ")")
                 // 不能放子线程，为什么？
                 // 点击 send 之后，这个时间才是想要留的最终的时间，保证只会生成一次
                 val time = SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date())
@@ -264,7 +269,8 @@ class WriteBlog : AppCompatActivity() {
                     "FromDraft" -> {
                         thread {
                             // 从传来的对象 的切割结果 就知道 id了！！根据id查出对象
-                            val thisBlogItem = BlogItemRepository.get().loadThisBlogItem(theBlogItemSplited!![1].toLong())
+                            val thisBlogItem = BlogItemRepository.get()
+                                .loadThisBlogItem(theBlogItemSplited!![1].toLong())
                             // 对对象的 isDraft 进行操作
                             // 其实保存和发送的【主要区别】在 isDraft值不一样 和 blog的初始值不一样 ，isDraft决定了这条博客是发到 主界面还是草稿箱
                             thisBlogItem.isDraft = false
@@ -297,7 +303,8 @@ class WriteBlog : AppCompatActivity() {
                         // 从传来的对象 的切割结果 就知道 id了！根据id查出被转发的对象,再把新生成的对象的id存到之前的被转发的对象的 reblogTo集合 里面
                         thread {
                             val thisBlogItemReblogFrom = BlogItemRepository.get().loadThisBlogItem(
-                                theBlogItemSplited[1].toLong())
+                                theBlogItemSplited[1].toLong()
+                            )
                             thisBlogItemReblogFrom.reblogTo.add(blogItemEditNow.id)
                             BlogItemRepository.get().updateBlogItem(thisBlogItemReblogFrom)
                         }
@@ -354,9 +361,9 @@ class WriteBlog : AppCompatActivity() {
         val user_name_in_prefs = prefs.getString("user_name", "快去取个名字！")
 
         return BlogItem(
-            Date().time,user_name_in_prefs!!, user_avatar_in_prefs," ",
+            Date().time, user_name_in_prefs!!, user_avatar_in_prefs, " ",
             SimpleDateFormat("yyyy/MM/dd HH:mm").format(Date()),
-            " ", " ", 0, 0,false,ArrayList(),
+            " ", " ", 0, 0, false, ArrayList(),
             false, false, false, false, false,
         )
     }

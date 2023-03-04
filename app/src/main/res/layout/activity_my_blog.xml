@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     android:background="@color/background_basic"
-    >
+    android:fitsSystemWindows="true">
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -17,11 +16,11 @@
             android:id="@+id/myBlogToolBarLayout"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@color/background_basic"
             app:layout_scrollFlags="snap|enterAlways"
-            app:scrimAnimationDuration="50"
-            app:title=" "
             app:menu="@menu/my_blog"
-            android:background="@color/background_basic"/>
+            app:scrimAnimationDuration="50"
+            app:title=" " />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -33,96 +32,98 @@
         android:orientation="vertical"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-<!--        header-->
+        <!--        header-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:backgroundTint="@android:color/transparent"
             android:gravity="center_vertical"
+            android:orientation="vertical"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <LinearLayout
                 android:id="@+id/my_blog_front"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:orientation="horizontal"
                 android:gravity="center_vertical"
+                android:orientation="horizontal"
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/user_avatar_in_profile"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="20dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/avatar"
-                app:layout_anchor="@id/appBarLayout"
-                app:layout_anchorGravity="bottom|end|left"
-                app:layout_collapseMode="parallax"
-                android:layout_gravity="center_vertical"/>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/user_avatar_in_profile"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="20dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/avatar"
+                    app:layout_anchor="@id/appBarLayout"
+                    app:layout_anchorGravity="bottom|end|left"
+                    app:layout_collapseMode="parallax" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
-            <Button
-                android:id="@+id/edit_profile"
+                <Button
+                    android:id="@+id/edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="20dp"
+                    android:backgroundTint="@color/background_basic_darker_2"
+                    android:gravity="center_vertical"
+                    android:text="编辑资料" />
+
+            </LinearLayout>
+
+            <include
+                layout="@layout/my_blog_profile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="20dp"
-                android:gravity="center_vertical"
-                android:backgroundTint="@color/background_basic_darker_2"
-                android:text="编辑资料" />
-
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_anchor="@id/user_avatar_in_profile"
+                app:layout_anchorGravity="bottom|end|left"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
         </LinearLayout>
 
-        <include
-            layout="@layout/my_blog_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            app:layout_anchor="@id/user_avatar_in_profile"
-            app:layout_anchorGravity="bottom|end|left"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"/>
-        </LinearLayout>
-
-<!--        tab-->
+        <!--        tab-->
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/my_blog_tablayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/background_basic"
-            app:tabGravity="fill"
             android:layout_marginStart="20dp"
-            app:tabSelectedTextColor="@color/background_basic_darker_2"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+            android:background="@color/background_basic"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:tabGravity="fill"
+            app:tabSelectedTextColor="@color/background_basic_darker_2">
 
         </com.google.android.material.tabs.TabLayout>
 
-<!--        footer-->
+        <!--        footer-->
         <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/my_blog_viewpager2"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:id="@+id/my_blog_viewpager2"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         </androidx.viewpager2.widget.ViewPager2>
 
-<!--        <FrameLayout-->
-<!--            android:id="@+id/frame_my_blog_fragment"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />-->
+        <!--        <FrameLayout-->
+        <!--            android:id="@+id/frame_my_blog_fragment"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />-->
 
     </com.cpoopc.scrollablelayoutlib.ScrollableLayout>
 
     <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
         android:id="@+id/floatingButtonMyBlog"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -132,7 +133,6 @@
         app:icon="@drawable/ic_outline_edit_24"
         app:layout_anchor="@id/myBlogLinear"
         app:layout_anchorGravity="bottom|end"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"/>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

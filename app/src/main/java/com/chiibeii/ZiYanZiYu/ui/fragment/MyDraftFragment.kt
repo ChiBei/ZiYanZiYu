@@ -13,10 +13,10 @@ import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.model.MyDraftViewModel
 import com.chiibeii.ZiYanZiYu.ui.adapter.MyDraftAdapter
 
-class MyDraftFragment:Fragment() {
+class MyDraftFragment : Fragment() {
 
     private var adapter = MyDraftAdapter(context, emptyList())
-    private lateinit var myDraftRecyclerView:RecyclerView
+    private lateinit var myDraftRecyclerView: RecyclerView
 
     private val myDraftViewModelInFragment by lazy {
         ViewModelProvider(this).get(MyDraftViewModel::class.java)
@@ -25,9 +25,9 @@ class MyDraftFragment:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
-        val view = inflater.inflate(R.layout.my_draft_fragment,container,false)
+        val view = inflater.inflate(R.layout.my_draft_fragment, container, false)
 
         myDraftRecyclerView = view.findViewById(R.id.myDraft_RecyclerView)
         myDraftRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -40,17 +40,17 @@ class MyDraftFragment:Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         myDraftViewModelInFragment.myDraftLiveData.observe(
-            viewLifecycleOwner,{
-                it?.let {
-                    updateUI(it)
-                }
+            viewLifecycleOwner
+        ) {
+            it?.let {
+                updateUI(it)
             }
-        )
+        }
     }
 
     // 刷新界面，实际上就是重新把itemList给adapter
-    private fun updateUI(blogItemList: List<BlogItem>){
-        adapter = MyDraftAdapter(context,blogItemList)
+    private fun updateUI(blogItemList: List<BlogItem>) {
+        adapter = MyDraftAdapter(context, blogItemList)
         myDraftRecyclerView.adapter = adapter
     }
 

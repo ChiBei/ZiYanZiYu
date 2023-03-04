@@ -6,9 +6,9 @@ import android.content.Context
 import com.chiibeii.ZiYanZiYu.logic.repository.BlogItemRepository
 import com.google.android.material.color.DynamicColors
 
-class MyApplication:Application() {
+class MyApplication : Application() {
 
-    companion object{
+    companion object {
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
     }

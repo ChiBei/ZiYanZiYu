@@ -19,7 +19,7 @@ import kotlin.concurrent.thread
 
 class MyDraftAdapter(
     private val context: Context?,
-    private val blogItemList: List<BlogItem>
+    private val blogItemList: List<BlogItem>,
 ) :
     RecyclerView.Adapter<MyDraftAdapter.MyDraftViewHolder>() {
 
@@ -28,7 +28,7 @@ class MyDraftAdapter(
         private val blogTime: TextView = itemView.findViewById(R.id.blogTimeInDraft)
         private val deleteDraft: View? = view.findViewById(R.id.deleteDraft)
         private val editDraft: View? = view.findViewById(R.id.editDraft)
-        private val isReblogInDraft:View? = view.findViewById(R.id.isReblogInDraft)
+        private val isReblogInDraft: View? = view.findViewById(R.id.isReblogInDraft)
 
         fun bind(blogItem: BlogItem) {
 
@@ -57,11 +57,11 @@ class MyDraftAdapter(
             }
 
             // 编辑 按钮
-            editDraft?.setOnClickListener{
+            editDraft?.setOnClickListener {
                 val intent = Intent(context, WriteBlog::class.java)
                 // 传一些信息出去！
-                intent.putExtra("TheBlogItem",blogItem.toString())
-                intent.putExtra("FromWhere","FromDraft")
+                intent.putExtra("TheBlogItem", blogItem.toString())
+                intent.putExtra("FromWhere", "FromDraft")
                 Log.d(TAG, "editDrafteditDraft:$blogItem ")
                 context?.startActivity(intent)
             }
@@ -71,7 +71,7 @@ class MyDraftAdapter(
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
-        viewType: Int
+        viewType: Int,
     ): MyDraftAdapter.MyDraftViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.draft_item, parent, false)
         return MyDraftViewHolder(view)
@@ -79,7 +79,7 @@ class MyDraftAdapter(
 
     override fun onBindViewHolder(
         holder: MyDraftAdapter.MyDraftViewHolder,
-        position: Int
+        position: Int,
     ) {
         val blogItem = blogItemList[position]
         holder.bind(blogItem)

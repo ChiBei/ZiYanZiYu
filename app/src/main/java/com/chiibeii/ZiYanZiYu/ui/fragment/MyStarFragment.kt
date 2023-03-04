@@ -47,12 +47,12 @@ class MyStarFragment:Fragment() {
         // 直接观察 viewmodel里面的 查询到的所有blog的那个livedata
         // viewLifecycleOwner是fragment，这个observer与这个fragment同生共死
         mainBlogItemListviewModelInFragment.myStarBlogItemListLiveData.observe(
-            viewLifecycleOwner, {
-                it?.let {
-                    adapter!!.submitList(it as MutableList<BlogItem>)
-                }
+            viewLifecycleOwner
+        ) {
+            it?.let {
+                adapter!!.submitList(it as MutableList<BlogItem>)
             }
-        )
+        }
     }
 
     // 让activity调用获取fragment实例？

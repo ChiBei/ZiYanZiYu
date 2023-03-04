@@ -5,4 +5,22 @@
         <a href="https://ablaze-kilometer-288.notion.site/96d95bd03fcd4cfb8e8b920263286715">
             用户协议</a>
     </string>
+
+<!--    用于设置界面的弹窗选择-->
+    <string-array name="entries_str">
+        <item >txt格式文件</item>
+        <item >markdown格式文件</item>
+        <item >json格式文件</item>
+        <item >png格式文件</item>
+    </string-array>
+<!--    一一对应-->
+    <string-array name="entries_values_str">
+        <item >"0"</item>
+        <item >"1"</item>
+        <item >"2"</item>
+        <item >"4"</item>
+    </string-array>
+    <string name="default_str">"0"</string>
+
+
 </resources>

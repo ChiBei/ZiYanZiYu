@@ -1,29 +1,17 @@
 package com.chiibeii.ZiYanZiYu.ui.fragment
 
-import android.content.ContentValues
-import android.content.SharedPreferences
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.preference.PreferenceManager
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.chiibeii.ZiYanZiYu.R
 import com.chiibeii.ZiYanZiYu.logic.entity.BlogItem
 import com.chiibeii.ZiYanZiYu.logic.model.MainBlogItemListViewModel
 import com.chiibeii.ZiYanZiYu.ui.adapter.MainBlogItemListAdapter
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.edit_profile_fragment.*
-import kotlin.concurrent.thread
 
 
 class MainBlogItemListFragment : Fragment() {
@@ -36,7 +24,7 @@ class MainBlogItemListFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View? {
         val view = inflater.inflate(R.layout.blog_item_list_fragment, container, false)
 
@@ -44,7 +32,7 @@ class MainBlogItemListFragment : Fragment() {
         val mainBlogItemListRecyclerView: RecyclerView =
             view.findViewById(R.id.main_BlogItemList_RecyclerView)
 
-        mainBlogItemListRecyclerView.layoutManager = StaggeredGridLayoutManager(1,1)
+        mainBlogItemListRecyclerView.layoutManager = StaggeredGridLayoutManager(1, 1)
         mainBlogItemListRecyclerView.adapter = myAdapter
 
 //        // 下拉刷新
@@ -76,21 +64,21 @@ class MainBlogItemListFragment : Fragment() {
         // 监测的本来就是整个列表里面的每一个item，哪个变了，listAdapter就更新哪个
         // viewLifecycleOwner 是 fragment，这个observer 与 这个fragment 同生共死
         mainBlogItemListViewModelInFragment.blogItemListLiveData.observe(
-            viewLifecycleOwner, {
-                it?.let {
-                    a.add(it.size)
-                    // 如果是添加元素，滚到最上面,否则原地删除
-                    if (a[a.size - 1] > a[a.size - 2]) {
-                        // 提交新列表
-                        myAdapter.submitList(it as MutableList<BlogItem>) {
-                            mainBlogItemListRecyclerView.scrollToPosition(0)
-                        }
-                    } else {
-                        myAdapter.submitList(it as MutableList<BlogItem>)
+            viewLifecycleOwner
+        ) {
+            it?.let {
+                a.add(it.size)
+                // 如果是添加元素，滚到最上面,否则原地删除
+                if (a[a.size - 1] > a[a.size - 2]) {
+                    // 提交新列表
+                    myAdapter.submitList(it as MutableList<BlogItem>) {
+                        mainBlogItemListRecyclerView.scrollToPosition(0)
                     }
+                } else {
+                    myAdapter.submitList(it as MutableList<BlogItem>)
                 }
             }
-        )
+        }
 
         // 所以这里在放屁
 //        for ( k in myAdapter.currentList ) {
@@ -99,10 +87,6 @@ class MainBlogItemListFragment : Fragment() {
 //                myAdapter.submitList(myAdapter.currentList)
 //            })
 //        }
-
-
-
-
 
     }
 
