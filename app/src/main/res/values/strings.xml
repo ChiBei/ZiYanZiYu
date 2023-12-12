@@ -2,25 +2,34 @@
     <string name="app_name">自言自语</string>
     <string name="user_agreement"><a href="https://ablaze-kilometer-288.notion.site/98cd6ab29075436bb44a55c06d42dbe0">隐私政策</a></string>
     <string name="privacy_policy">
-        <a href="https://ablaze-kilometer-288.notion.site/96d95bd03fcd4cfb8e8b920263286715">
-            用户协议</a>
+        <a href="https://ablaze-kilometer-288.notion.site/96d95bd03fcd4cfb8e8b920263286715">用户协议</a>
     </string>
 
-<!--    用于设置界面的弹窗选择-->
+    <!--    用于设置界面的弹窗选择-->
     <string-array name="entries_str">
-        <item >txt格式文件</item>
-        <item >markdown格式文件</item>
-        <item >json格式文件</item>
-        <item >png格式文件</item>
+        <item>txt格式文件</item>
+        <item>markdown格式文件</item>
+        <item>json格式文件</item>
+        <item>png格式文件</item>
     </string-array>
-<!--    一一对应-->
+    <!--    一一对应-->
     <string-array name="entries_values_str">
-        <item >"0"</item>
-        <item >"1"</item>
-        <item >"2"</item>
-        <item >"4"</item>
+        <item>"0"</item>
+        <item>"1"</item>
+        <item>"2"</item>
+        <item>"4"</item>
     </string-array>
     <string name="default_str">"0"</string>
 
+    <string name="key_category_usage">usage</string>
+    <string name="key_category_about">about</string>
+
+    <string name="key_output_type">out_type</string>
+    <string name="key_input_type">input_type</string>
+
+    <string name="key_thanks">thanks</string>
+    <string name="key_secret">secret</string>
+    <string name="key_creator">creator</string>
+    <string name="key_contract">contract</string>
 
 </resources>

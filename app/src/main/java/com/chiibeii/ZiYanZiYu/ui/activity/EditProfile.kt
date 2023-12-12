@@ -61,14 +61,22 @@ class EditProfile : AppCompatActivity() {
         button_user_choose_avatar.setOnClickListener {
             click_To_Change_Avatar.visibility = View.GONE
             // 选 照片
-            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
-            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            val intent = Intent(Intent.ACTION_GET_CONTENT)
+//            intent.addCategory(Intent.CATEGORY_OPENABLE)
             intent.type = "image/*"
             startActivityForResult(intent, 1)
 
         }
 
         // 预置 换头像 功能
+//        button_user_choose_avatar_from_res.setOnClickListener {
+//            click_To_Change_Avatar.visibility = View.GONE
+//            // 弹出 bottomSheet
+//            val editAvatarBottomSheet = EditAvatarFragment()
+//            editAvatarBottomSheet.show(supportFragmentManager, "aaa")
+//        }
+
+        // 尝试自定义图片
         button_user_choose_avatar_from_res.setOnClickListener {
             click_To_Change_Avatar.visibility = View.GONE
             // 弹出 bottomSheet
@@ -106,6 +114,8 @@ class EditProfile : AppCompatActivity() {
                 avatar_in_profile_fragment.setImageResource(it)
                 Log.d(TAG, "onCreate: 222222222222222222222222222222222222222222222")
             }
+
+
         }
 
     }

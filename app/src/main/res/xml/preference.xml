@@ -2,7 +2,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <PreferenceCategory
-        app:key="preference_category_1"
+        app:key="@string/key_category_usage"
         app:title="功能">
 
         <ListPreference
@@ -11,11 +11,13 @@
             android:entries="@array/entries_str"
             android:entryValues="@array/entries_values_str"
             android:icon="@drawable/ic_baseline_arrow_back_24"
-            android:key="roomToJson"
+            android:key="@string/key_output_type"
             android:negativeButtonText="222"
             android:positiveButtonText="111"
             android:title="导出软件数据到外部文件"
             app:useSimpleSummaryProvider="true" />
+<!--            app:useSimpleSummaryProvider="true" -->
+
 
         <ListPreference
             android:defaultValue="@string/default_str"
@@ -32,24 +34,24 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        app:key="preference_category_2"
+        app:key="@string/key_category_about"
         app:title="关于">
 
         <Preference
             android:icon="@drawable/ic_outline_emoji_events_24"
-            android:key="thanks"
-            android:summary="头像均来自craftwork的Free Userpics Pack，部分字体为优设标题黑。"
+            android:key="@string/key_thanks"
+            android:summary="头像均来自craftwork的Free UserPics Pack，部分字体为优设标题黑。"
             android:title="致谢" />
 
         <Preference
             android:icon="@drawable/ic_outline_email_24"
-            android:key="about_user"
+            android:key="@string/key_creator"
             android:summary="邮箱：chiibeii@163.com"
             android:title="开发者联系方式" />
 
         <Preference
             android:icon="@drawable/ic_outline_insert_drive_file_24"
-            android:key="about_secret"
+            android:key="@string/key_secret"
             android:title="隐私政策">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -59,7 +61,7 @@
 
         <Preference
             android:icon="@drawable/ic_outline_fact_check_24"
-            android:key="about_contract"
+            android:key="@string/key_contract"
             android:title="用户协议">
             <intent
                 android:action="android.intent.action.VIEW"
